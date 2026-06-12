@@ -17,6 +17,54 @@
                 }
             }
         }
+        
+        async function submitContactForm(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('form-submit-btn');
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+
+            const payload = {
+                access_key: document.getElementById('form-access-key').value,
+                name: document.getElementById('form-name').value,
+                email: document.getElementById('form-email').value,
+                phone: document.getElementById('form-phone').value,
+                message: document.getElementById('form-message').value
+            };
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    window.location.hash = '#/';
+                    
+                    const banner = document.getElementById('success-banner');
+                    banner.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        banner.classList.add('hidden');
+                    }, 4000);
+                } else {
+                    alert("Submission configuration error. Please verify API fields.");
+                }
+            } catch (error) {
+                console.error("Form transmission failed:", error);
+                alert("Network connectivity issue. Please try again.");
+            } finally {
+                if (document.getElementById('form-submit-btn')) {
+                    submitBtn.innerText = "Send Message Request";
+                    submitBtn.disabled = false;
+                }
+            }
+        }
     </script>
     <style>
         .fade-in { animation: fadeIn 0.3s ease-in-out forwards; }
@@ -24,6 +72,13 @@
     </style>
 </head>
 <body class="bg-clinicLight text-slate-800 font-sans flex flex-col min-h-screen antialiased">
+
+    <div id="success-banner" class="hidden fixed top-24 left-1/2 transform -translate-x-1/2 z-50 bg-emerald-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center space-x-2 border border-emerald-500/30 font-medium text-sm transition-all duration-300">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+        </svg>
+        <span>Enquiry sent successfully. We will call you shortly.</span>
+    </div>
 
     <header class="w-full bg-clinicDark text-white py-4 px-6 md:px-12 sticky top-0 z-50 border-b border-slate-800 shadow-xl">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -38,6 +93,7 @@
             <nav id="spa-nav" class="hidden md:flex items-center bg-slate-900/80 border border-slate-800 rounded-full px-2 py-1.5 backdrop-blur-sm shadow-inner">
                 <a href="#/" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-white bg-clinicBlue">Home</a>
                 <a href="#/doctors" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-slate-400 hover:text-white">Doctors</a>
+                <a href="#/services" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-slate-400 hover:text-white">Services</a>
                 <a href="#/pricing" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-slate-400 hover:text-white">Pricing</a>
                 <a href="#/contact" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-slate-400 hover:text-white">Contact</a>
             </nav>
@@ -56,12 +112,10 @@
     <footer class="bg-clinicDark text-slate-500 text-xs py-8 px-6 border-t border-slate-800">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p>&copy; 2026 The Bladder Clinic. All rights reserved.</p>
-            
         </div>
     </footer>
 
     <script>
-        // Centralized Array - Simply edit this array to manage your doctors instantly
         const clinicDoctors = [
             {
                 name: "Dr. Elayne Ooi",
@@ -79,7 +133,6 @@
             }
         ];
 
-        // Centralized Page Content Layouts
         const routes = {
             '#/': `
                 <section class="bg-gradient-to-b from-clinicDark to-slate-900 text-white py-24 px-6 md:px-12 text-center">
@@ -103,73 +156,184 @@
                     <div id="doctors-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
                 </section>
             `,
-            '#/pricing': `
-                <section class="py-16 px-6 max-w-4xl mx-auto">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-clinicDark tracking-tight">Consultation Fees & Pricing</h2>
-                        <p class="text-slate-500 mt-3">Transparent financial outlines for appointments and specialist services.</p>
+            '#/services': `
+                <section class="py-16 px-6 max-w-6xl mx-auto">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-xs font-bold uppercase tracking-widest text-clinicBlue bg-blue-50 px-3 py-1 rounded-full">Clinical Architecture</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-clinicDark tracking-tight mt-3">Multidisciplinary Model of Care</h2>
+                        <p class="text-slate-500 mt-3">Our clinic targets complex, recurrent bladder and pelvic symptoms through integrated specialty pathways.</p>
                     </div>
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 divide-y divide-slate-100 overflow-hidden">
-                        <div class="p-6 flex justify-between items-center"><span class="font-medium text-slate-700">Initial Specialist Consultation</span><span class="font-bold text-clinicBlue">$280.00</span></div>
-                        <div class="p-6 flex justify-between items-center"><span class="font-medium text-slate-700">Follow-up Appointment</span><span class="font-bold text-clinicBlue">$150.00</span></div>
-                        <div class="p-6 flex justify-between items-center"><span class="font-medium text-slate-700">Complex Pelvic Assessment</span><span class="font-bold text-clinicBlue">$390.00</span></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-clinicBlue flex items-center justify-center font-bold mb-4">01</div>
+                            <h3 class="text-lg font-bold text-clinicDark mb-2">Urinary Tract Infections</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Management of persistent, chronic, or recurrent bladder inflammation and resistant urinary tract strains.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-clinicBlue flex items-center justify-center font-bold mb-4">02</div>
+                            <h3 class="text-lg font-bold text-clinicDark mb-2">Urogenital Abnormalities</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Comprehensive specialist evaluation of physical, structural, or functional conditions altering bladder, uterus, or prostate anatomy.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-clinicBlue flex items-center justify-center font-bold mb-4">03</div>
+                            <h3 class="text-lg font-bold text-clinicDark mb-2">Pelvic Floor Dysfunction</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Targeted physical muscle rehabilitation maps and coordinate diagnostics for functional pelvic structural support issues.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-clinicBlue flex items-center justify-center font-bold mb-4">04</div>
+                            <h3 class="text-lg font-bold text-clinicDark mb-2">Neuropathic Pain Mechanisms</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Management of complex, centralized chronic pain matrices impacting bladder functionality and neurological nerve roots.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-clinicBlue flex items-center justify-center font-bold mb-4">05</div>
+                            <h3 class="text-lg font-bold text-clinicDark mb-2">Hormonal & Inflammatory Shifts</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Identifying functional links regarding autoimmune conditions, endocrine tissue transitions, and structural cellular shifts.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-clinicBlue flex items-center justify-center font-bold mb-4">06</div>
+                            <h3 class="text-lg font-bold text-clinicDark mb-2">Coordinated Nurse Triage</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">All patients undergo a foundational initial history mapping assessment with a clinical Nurse Practitioner to optimize referral accuracy.</p>
+                        </div>
                     </div>
                 </section>
             `,
-			'#/contact': `
-				<section class="py-16 px-6 max-w-lg mx-auto">
-					<h2 class="text-3xl font-extrabold text-clinicDark text-center mb-8">Secure Contact Enquiry</h2>
-					
-					<form action="https://api.web3forms.com/submit" method="POST" class="space-y-6 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
-						
-						<input type="hidden" name="access_key" value="f111cef4-10ac-4a80-ae11-428ddfbe0aa7">
-						
-						<input type="hidden" name="redirect" value="${window.location.origin}${window.location.pathname}#/html-success-placeholder">
+            '#/pricing': `
+                <section class="py-16 px-6 max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <span class="text-xs font-bold uppercase tracking-widest text-clinicBlue bg-blue-50 px-3 py-1 rounded-full">Medicare Outlines</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-clinicDark tracking-tight mt-3">Consultation Fees & Rebates</h2>
+                        <p class="text-slate-500 mt-3">The Bladder Clinic utilizes a structured medical intake tier. Medicare rebates apply to standard provider consultations with a valid GP referral letter.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 divide-y divide-slate-100 overflow-hidden">
+                        <div class="p-6 flex justify-between items-center">
+                            <div>
+                                <span class="block font-bold text-slate-800">Initial Nurse Practitioner Assessment</span>
+                                <span class="text-xs text-slate-400">Comprehensive baseline history charting and clinical diagnostic triage mapping.</span>
+                            </div>
+                            <span class="font-extrabold text-clinicBlue text-lg">$140.00</span>
+                        </div>
+                        <div class="p-6 flex justify-between items-center">
+                            <div>
+                                <span class="block font-bold text-slate-800">Senior Consultant Specialist Visit</span>
+                                <span class="text-xs text-slate-400">Direct specialist review across Urology, Gynaecology, or Pain Medicine tracks.</span>
+                            </div>
+                            <span class="font-extrabold text-clinicBlue text-lg">$295.00</span>
+                        </div>
+                        <div class="p-6 flex justify-between items-center">
+                            <div>
+                                <span class="block font-bold text-slate-800">Pelvic Health Physiotherapy Review</span>
+                                <span class="text-xs text-slate-400">Targeted functional assessment and muscle framework mechanics planning.</span>
+                            </div>
+                            <span class="font-extrabold text-clinicBlue text-lg">$165.00</span>
+                        </div>
+                        <div class="p-6 flex justify-between items-center">
+                            <div>
+                                <span class="block font-bold text-slate-800">Clinical Psychology Consultation</span>
+                                <span class="text-xs text-slate-400">Evaluating neurological nerve root drivers and somatic symptom adaptation profiles.</span>
+                            </div>
+                            <span class="font-extrabold text-clinicBlue text-lg">$210.00</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 bg-slate-50 rounded-xl p-4 border border-slate-200/60 text-xs text-slate-500 leading-relaxed">
+                        <strong>Please Note:</strong> Reduced baseline billing concessions may be applicable for valid Pension or Health Care Card holders upon direct presentation to clinic administration. Veteran's Affairs Gold Card assignments are fully processed under DVA schedules.
+                    </div>
+                </section>
+            `,
+            '#/contact': `
+                <section class="py-16 px-6 max-w-7xl mx-auto">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <h2 class="text-3xl font-extrabold text-clinicDark tracking-tight">Contact Our Team</h2>
+                        <p class="text-slate-500 mt-2">Reach out below to submit a message to our reception desk or locate our facility in Mount Hawthorn.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        
+                        <div class="lg:col-span-5 space-y-8">
+                            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                                <h3 class="text-lg font-bold text-clinicDark border-b border-slate-100 pb-2">Clinic Operations</h3>
+                                
+                                <div>
+                                    <span class="block text-xs font-bold uppercase text-slate-400">Street Address</span>
+                                    <span class="text-sm font-medium text-slate-700">249 Scarborough Beach Rd, Mount Hawthorn WA 6016</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="block text-xs font-bold uppercase text-slate-400">Communication Channels</span>
+                                    <span class="text-sm block font-semibold text-clinicBlue">Phone: 08 6555 6516</span>
+                                    <span class="text-sm block text-slate-600">Email: emailus@bladder-clinic.com</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="block text-xs font-bold uppercase text-slate-400">Standard Consulting Hours</span>
+                                    <span class="text-sm block text-slate-700">Monday to Friday: 9:00 AM – 4:00 PM</span>
+                                    <span class="text-sm block text-slate-400">Saturday, Sunday & Public Holidays: Closed</span>
+                                </div>
+                            </div>
+                            
+                            <div class="w-full h-80 rounded-2xl overflow-hidden shadow-sm border border-slate-200">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2s0x2a32a537f00d235f%3A0xb304b4d7ca656b27!2s249%20Scarborough%20Beach%20Rd%2C%20Mount%20Hawthorn%20WA%206016!5m2!1sen!2sau" 
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
 
-						<div>
-							<label class="block text-sm font-semibold text-slate-700 mb-2">Patient Full Name</label>
-							<input type="text" name="name" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition">
-						</div>
-						<div>
-							<label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-							<input type="email" name="email" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition">
-						</div>
-						<div>
-							<label class="block text-sm font-semibold text-slate-700 mb-2">Contact Number</label>
-							<input type="tel" name="phone" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition">
-						</div>
-						<div>
-							<label class="block text-sm font-semibold text-slate-700 mb-2">Message Note</label>
-							<textarea name="message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition"></textarea>
-						</div>
-						
-						<button type="submit" class="w-full bg-clinicBlue text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-sm">
-							Send Message Request
-						</button>
-					</form>
-				</section>
-			`
+                        <div class="lg:col-span-7">
+                            <form onsubmit="submitContactForm(event)" class="space-y-6 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+                                <input type="hidden" id="form-access-key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Patient Full Name</label>
+                                    <input type="text" id="form-name" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition" placeholder="John Doe">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+                                    <input type="email" id="form-email" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition" placeholder="john@example.com">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Contact Number</label>
+                                    <input type="number" id="form-phone" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition" placeholder="0412345678">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Message Note</label>
+                                    <textarea id="form-message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition" placeholder="Please outline details..."></textarea>
+                                </div>
+                                
+                                <button type="submit" id="form-submit-btn" class="w-full bg-clinicBlue text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-sm">
+                                    Send Message Request
+                                </button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </section>
+            `
         };
 
         function router() {
-            // Get current hash or default to home root hash if missing
             let hash = window.location.hash || '#/';
             
-            // Fallback for invalid hashes
             if (!routes[hash]) {
                 hash = '#/';
             }
 
             const container = document.getElementById('app-view');
             
-            // Smooth view transition reset
             container.classList.remove('fade-in');
             void container.offsetWidth; 
             container.classList.add('fade-in');
             
             container.innerHTML = routes[hash];
 
-            // Handle dynamic template generation for Doctors page
             if (hash === '#/doctors') {
                 const grid = document.getElementById('doctors-grid');
                 grid.innerHTML = clinicDoctors.map(doc => `
@@ -187,7 +351,6 @@
                 `).join('');
             }
 
-            // Update Header Navigation Link Active Styles
             document.querySelectorAll('#spa-nav a').forEach(navLink => {
                 if (navLink.getAttribute('href') === hash) {
                     navLink.className = "px-4 py-1.5 rounded-full text-sm font-medium transition text-white bg-clinicBlue";
@@ -197,10 +360,7 @@
             });
         }
 
-        // Listen for browser URL hash changes natively
         window.addEventListener("hashchange", router);
-
-        // Run initialization routing check on load
         document.addEventListener("DOMContentLoaded", router);
     </script>
 </body>
