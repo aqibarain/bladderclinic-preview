@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bladder Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clinicBlue: '#2058a5',
+                        clinicDark: '#0f172a',
+                        clinicLight: '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in { animation: fadeIn 0.3s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-clinicLight text-slate-800 font-sans flex flex-col min-h-screen antialiased">
+
+    <header class="w-full bg-clinicDark text-white py-4 px-6 md:px-12 sticky top-0 z-50 border-b border-slate-800 shadow-xl">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            
+            <a href="#/" class="flex items-center space-x-3 group">
+                <div class="w-8 h-8 rounded-lg bg-clinicBlue flex items-center justify-center font-bold text-white shadow-md group-hover:scale-105 transition">
+                    B
+                </div>
+                <span class="text-lg font-bold tracking-tight uppercase text-white">The Bladder <span class="text-clinicBlue">Clinic</span></span>
+            </a>
+            
+            <nav id="spa-nav" class="hidden md:flex items-center bg-slate-900/80 border border-slate-800 rounded-full px-2 py-1.5 backdrop-blur-sm shadow-inner">
+                <a href="#/" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-white bg-clinicBlue">Home</a>
+                <a href="#/doctors" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-slate-400 hover:text-white">Doctors</a>
+                <a href="#/pricing" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-slate-400 hover:text-white">Pricing</a>
+                <a href="#/contact" class="px-4 py-1.5 rounded-full text-sm font-medium transition text-slate-400 hover:text-white">Contact</a>
+            </nav>
+            
+            <div>
+                <a href="#/contact" class="bg-clinicBlue text-white text-xs md:text-sm px-5 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition shadow-md whitespace-nowrap">
+                    Make Enquiry
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main id="app-view" class="flex-grow fade-in"></main>
+
+    <footer class="bg-clinicDark text-slate-500 text-xs py-8 px-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 The Bladder Clinic. All rights reserved.</p>
+            
+        </div>
+    </footer>
+
+    <script>
+        // Centralized Array - Simply edit this array to manage your doctors instantly
+        const clinicDoctors = [
+            {
+                name: "Dr. Elayne Ooi",
+                title: "Lead Consultant Urological Surgeon",
+                degrees: "MBBS, FRACS (Urology)",
+                image: "./assets/images/doctor-one.webp", 
+                specialties: ["Urological Oncology", "Robotic Surgery", "Bladder Dysfunction"]
+            },
+            {
+                name: "Dr. Specialist Associate",
+                title: "Consultant Urologist",
+                degrees: "MBBS, Ph.D, FRACS",
+                image: "./assets/images/doctor-two.webp",
+                specialties: ["Pelvic Floor Rehabilitation", "Incontinence Care", "General Urology"]
+            }
+        ];
+
+        // Centralized Page Content Layouts
+        const routes = {
+            '#/': `
+                <section class="bg-gradient-to-b from-clinicDark to-slate-900 text-white py-24 px-6 md:px-12 text-center">
+                    <div class="max-w-4xl mx-auto space-y-8">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">Multidisciplinary Medical Care</span>
+                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-none text-white max-w-3xl mx-auto">Coordinated Specialist Care for Bladder & Pelvic Health</h1>
+                        <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">Integrated clinical expertise bringing together urology, allied health, and specialised assessment for complex conditions.</p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                            <a href="#/doctors" class="w-full sm:w-auto bg-clinicBlue text-white px-8 py-3.5 rounded-full font-bold text-sm hover:bg-blue-700 transition shadow-lg text-center">Meet Our Specialists</a>
+                            <a href="#/pricing" class="w-full sm:w-auto bg-slate-800 border border-slate-700 text-slate-300 px-8 py-3.5 rounded-full font-bold text-sm hover:bg-slate-700 transition text-center">View Fees & Pricing</a>
+                        </div>
+                    </div>
+                </section>
+            `,
+            '#/doctors': `
+                <section class="py-16 px-6 max-w-6xl mx-auto">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-clinicDark tracking-tight">Our Medical Specialists</h2>
+                        <p class="text-slate-500 mt-3">Easily adding or removing clinicians from our internal config array updates this display instantly.</p>
+                    </div>
+                    <div id="doctors-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+                </section>
+            `,
+            '#/pricing': `
+                <section class="py-16 px-6 max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-clinicDark tracking-tight">Consultation Fees & Pricing</h2>
+                        <p class="text-slate-500 mt-3">Transparent financial outlines for appointments and specialist services.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 divide-y divide-slate-100 overflow-hidden">
+                        <div class="p-6 flex justify-between items-center"><span class="font-medium text-slate-700">Initial Specialist Consultation</span><span class="font-bold text-clinicBlue">$280.00</span></div>
+                        <div class="p-6 flex justify-between items-center"><span class="font-medium text-slate-700">Follow-up Appointment</span><span class="font-bold text-clinicBlue">$150.00</span></div>
+                        <div class="p-6 flex justify-between items-center"><span class="font-medium text-slate-700">Complex Pelvic Assessment</span><span class="font-bold text-clinicBlue">$390.00</span></div>
+                    </div>
+                </section>
+            `,
+			'#/contact': `
+				<section class="py-16 px-6 max-w-lg mx-auto">
+					<h2 class="text-3xl font-extrabold text-clinicDark text-center mb-8">Secure Contact Enquiry</h2>
+					
+					<form action="https://api.web3forms.com/submit" method="POST" class="space-y-6 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+						
+						<input type="hidden" name="access_key" value="f111cef4-10ac-4a80-ae11-428ddfbe0aa7">
+						
+						<input type="hidden" name="redirect" value="${window.location.origin}${window.location.pathname}#/html-success-placeholder">
+
+						<div>
+							<label class="block text-sm font-semibold text-slate-700 mb-2">Patient Full Name</label>
+							<input type="text" name="name" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition">
+						</div>
+						<div>
+							<label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+							<input type="email" name="email" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition">
+						</div>
+						<div>
+							<label class="block text-sm font-semibold text-slate-700 mb-2">Contact Number</label>
+							<input type="tel" name="phone" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition">
+						</div>
+						<div>
+							<label class="block text-sm font-semibold text-slate-700 mb-2">Message Note</label>
+							<textarea name="message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-clinicBlue transition"></textarea>
+						</div>
+						
+						<button type="submit" class="w-full bg-clinicBlue text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-sm">
+							Send Message Request
+						</button>
+					</form>
+				</section>
+			`
+        };
+
+        function router() {
+            // Get current hash or default to home root hash if missing
+            let hash = window.location.hash || '#/';
+            
+            // Fallback for invalid hashes
+            if (!routes[hash]) {
+                hash = '#/';
+            }
+
+            const container = document.getElementById('app-view');
+            
+            // Smooth view transition reset
+            container.classList.remove('fade-in');
+            void container.offsetWidth; 
+            container.classList.add('fade-in');
+            
+            container.innerHTML = routes[hash];
+
+            // Handle dynamic template generation for Doctors page
+            if (hash === '#/doctors') {
+                const grid = document.getElementById('doctors-grid');
+                grid.innerHTML = clinicDoctors.map(doc => `
+                    <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm flex flex-col sm:flex-row gap-6 items-start">
+                        <img src="${doc.image}" alt="${doc.name}" class="w-full sm:w-32 h-32 object-cover rounded-xl bg-slate-100 shadow-inner">
+                        <div class="flex-grow">
+                            <span class="text-xs font-bold uppercase tracking-wider text-clinicBlue">${doc.title}</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-0.5">${doc.name}</h3>
+                            <p class="text-xs font-semibold text-slate-400">${doc.degrees}</p>
+                            <div class="mt-4 flex flex-wrap gap-1">
+                                ${doc.specialties.map(spec => `<span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">${spec}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Update Header Navigation Link Active Styles
+            document.querySelectorAll('#spa-nav a').forEach(navLink => {
+                if (navLink.getAttribute('href') === hash) {
+                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-medium transition text-white bg-clinicBlue";
+                } else {
+                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-medium transition text-slate-400 hover:text-white";
+                }
+            });
+        }
+
+        // Listen for browser URL hash changes natively
+        window.addEventListener("hashchange", router);
+
+        // Run initialization routing check on load
+        document.addEventListener("DOMContentLoaded", router);
+    </script>
+</body>
+</html>
