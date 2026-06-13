@@ -13,10 +13,12 @@
             theme: {
                 extend: {
                     colors: {
-                        clinicHeader: '#b1c4d4', 
-                        clinicMain: '#e3ebe5',   
-                        clinicButton: '#b1c4d4', 
-                        clinicDarkText: '#0f172a', 
+                        clinicCream: '#F7F1E8',       
+                        clinicCharcoal: '#3A332E',    
+                        clinicTerracotta: '#C97B5A',  
+                        clinicSage: '#8FA68E',        
+                        clinicRose: '#D9A8A0',        
+                        clinicOchre: '#C9A04A'        
                     }
                 }
             }
@@ -24,7 +26,6 @@
         
         async function submitContactForm(event) {
             event.preventDefault();
-            
             const submitBtn = document.getElementById('form-submit-btn');
             submitBtn.innerText = "Sending...";
             submitBtn.disabled = true;
@@ -49,13 +50,9 @@
 
                 if (response.ok) {
                     window.location.hash = '#/';
-                    
                     const banner = document.getElementById('success-banner');
                     banner.classList.remove('hidden');
-                    
-                    setTimeout(() => {
-                        banner.classList.add('hidden');
-                    }, 4000);
+                    setTimeout(() => { banner.classList.add('hidden'); }, 4000);
                 } else {
                     alert("Submission configuration error. Please verify API fields.");
                 }
@@ -70,7 +67,6 @@
             }
         }
 
-        // MOBILE NAVIGATION DRAWER TOGGLES
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
@@ -106,20 +102,11 @@
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "09:00",
         "closes": "16:00"
       },
-      "medicalSpecialty": [
-        "Urology",
-        "Gynecology"
-      ]
+      "medicalSpecialty": ["Urology", "Gynecology"]
     }
     </script>
 
@@ -128,39 +115,38 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-clinicMain text-clinicDarkText font-sans flex flex-col min-h-screen antialiased">
+<body class="bg-clinicCream text-clinicCharcoal font-sans flex flex-col min-h-screen antialiased">
 
-    <div id="success-banner" class="hidden fixed top-24 left-1/2 transform -translate-x-1/2 z-50 bg-emerald-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center space-x-2 border border-emerald-500/30 font-medium text-sm transition-all duration-300">
+    <div id="success-banner" class="hidden fixed top-24 left-1/2 transform -translate-x-1/2 z-50 bg-clinicSage text-white px-6 py-3 rounded-full shadow-2xl flex items-center space-x-2 border border-white/20 font-medium text-sm transition-all duration-300">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
         </svg>
         <span>Enquiry sent successfully. We will call you shortly.</span>
     </div>
 
-    <header class="w-full bg-clinicHeader text-clinicDarkText py-4 px-4 md:px-12 sticky top-0 z-50 border-b border-slate-300/50 shadow-md">
+    <header class="w-full bg-clinicTerracotta text-white py-4 px-4 md:px-12 sticky top-0 z-50 border-b border-clinicTerracotta/40 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             
             <a href="#/" onclick="closeMobileMenu()" class="flex items-center space-x-2 md:space-x-3 group">
-                <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center font-bold text-clinicDarkText shadow-sm group-hover:scale-105 transition">
+                <div class="w-8 h-8 rounded-lg bg-clinicCream flex items-center justify-center font-bold text-clinicTerracotta shadow-sm group-hover:scale-105 transition">
                     B
                 </div>
-                <span class="text-base md:text-lg font-bold tracking-tight uppercase text-clinicDarkText">The Bladder <span class="text-white">Clinic</span></span>
+                <span class="text-base md:text-lg font-bold tracking-tight uppercase text-white">The Bladder <span class="text-clinicCream">Clinic</span></span>
             </a>
             
-            <nav id="spa-nav" class="hidden md:flex items-center bg-white/60 border border-white/40 rounded-full px-2 py-1.5 backdrop-blur-sm shadow-sm">
-                <a href="#/" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-clinicDarkText bg-white shadow-sm">Home</a>
-                <a href="#/doctors" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-600 hover:text-clinicDarkText">Doctors</a>
-                <a href="#/services" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-600 hover:text-clinicDarkText">Services</a>
-                <a href="#/pricing" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-600 hover:text-clinicDarkText">Pricing</a>
-                <a href="#/contact" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-600 hover:text-clinicDarkText">Contact</a>
+            <nav id="spa-nav" class="hidden md:flex items-center bg-clinicCharcoal/20 border border-white/20 rounded-full px-2 py-1.5 backdrop-blur-sm shadow-inner">
+                <a href="#/" class="px-4 py-1.5 rounded-full text-sm font-bold transition text-clinicCharcoal bg-clinicCream shadow-sm">Home</a>
+                <a href="#/doctors" class="px-4 py-1.5 rounded-full text-sm font-bold transition text-white hover:text-clinicCream">Doctors</a>
+                <a href="#/services" class="px-4 py-1.5 rounded-full text-sm font-bold transition text-white hover:text-clinicCream">Services</a>
+                <a href="#/pricing" class="px-4 py-1.5 rounded-full text-sm font-bold transition text-white hover:text-clinicCream">Pricing</a>
+                <a href="#/contact" class="px-4 py-1.5 rounded-full text-sm font-bold transition text-white hover:text-clinicCream">Contact</a>
             </nav>
             
             <div class="flex items-center space-x-4">
-                <a href="#/contact" class="hidden sm:inline-block bg-white text-clinicDarkText text-xs md:text-sm px-5 py-2.5 rounded-full font-bold hover:bg-slate-50 transition shadow-sm border border-slate-200/40 whitespace-nowrap">
+                <a href="#/contact" class="hidden sm:inline-block bg-clinicCharcoal text-white text-xs md:text-sm px-5 py-2.5 rounded-full font-bold hover:bg-clinicCharcoal/90 transition shadow-sm whitespace-nowrap">
                     Make Enquiry
                 </a>
-                
-                <button onclick="toggleMobileMenu()" class="md:hidden block text-clinicDarkText focus:outline-none p-1 bg-white/40 rounded-lg border border-white/40" aria-label="Toggle Menu">
+                <button onclick="toggleMobileMenu()" class="md:hidden block text-white focus:outline-none p-1 bg-white/20 rounded-lg border border-white/20" aria-label="Toggle Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -169,13 +155,13 @@
 
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white/95 rounded-2xl p-4 border border-slate-200 shadow-xl backdrop-blur-md absolute left-4 right-4 top-16 fade-in">
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-clinicCream rounded-2xl p-4 border border-clinicSage/20 shadow-xl absolute left-4 right-4 top-16 fade-in">
             <nav id="spa-nav-mobile" class="flex flex-col space-y-2">
-                <a href="#/" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-clinicDarkText bg-slate-100">Home</a>
-                <a href="#/doctors" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700">Doctors</a>
-                <a href="#/services" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700">Services</a>
-                <a href="#/pricing" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700">Pricing</a>
-                <a href="#/contact" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700">Contact</a>
+                <a href="#/" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-white bg-clinicTerracotta shadow-sm">Home</a>
+                <a href="#/doctors" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-clinicCharcoal hover:bg-clinicRose/20">Doctors</a>
+                <a href="#/services" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-clinicCharcoal hover:bg-clinicRose/20">Services</a>
+                <a href="#/pricing" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-clinicCharcoal hover:bg-clinicRose/20">Pricing</a>
+                <a href="#/contact" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-clinicCharcoal hover:bg-clinicRose/20">Contact</a>
             </nav>
         </div>
     </header>
@@ -184,16 +170,10 @@
         <noscript>
             <h1>The Bladder Clinic Perth</h1>
             <p>Specialist medical care for complex pelvic and urology conditions in Mount Hawthorn, Western Australia.</p>
-            <h2>Our Services</h2>
-            <ul>
-                <li>Urinary Tract Infection Treatment</li>
-                <li>Pelvic Floor Dysfunction Rehabilitation</li>
-                <li>Urogenital Structural Assessments</li>
-            </ul>
         </noscript>
     </main>
 
-    <footer class="bg-clinicHeader text-slate-700 text-xs py-8 px-6 border-t border-slate-300/50">
+    <footer class="bg-clinicTerracotta text-white text-xs py-8 px-6 border-t border-white/20">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <p class="font-medium w-full md:w-auto">© 2026 The Bladder Clinic. All rights reserved.</p>
         </div>
@@ -202,82 +182,172 @@
     <script>
         const clinicDoctors = [
             {
-                name: "Dr. Elayne Ooi",
-                title: "Lead Consultant Urological Surgeon",
-                degrees: "MBBS, FRACS (Urology)",
-                image: "./assets/images/doctor-one.webp", 
-                specialties: ["Urological Oncology", "Robotic Surgery", "Bladder Dysfunction"]
+                name: "Dr Elayne Ooi",
+                title: "Urinary Tract Specialist Division",
+                degrees: "Consultant Medical Surgeon",
+                image: "./assets/images/Elayne.jpg", 
+                description: "Elayne is a Urologist with a special interest in overactive bladder, voiding dysfunction, recurrent urinary tract infections, prostate enlargement, and prostate cancer. She provides specialist assessment of structural and functional contributors to urinary symptoms, supporting accurate diagnosis and targeted management.",
+                specialties: ["Urinary incontinence", "Bladder dysfunction", "Benign prostatic enlargement","Recurrent urinary tract infections","Minimally invasive robotic and endoscopic surgery","Integrated medical and surgical management"]
             },
             {
-                name: "Dr. Specialist Associate",
-                title: "Consultant Urologist",
-                degrees: "MBBS, Ph.D, FRACS",
-                image: "./assets/images/doctor-two.webp",
-                specialties: ["Pelvic Floor Rehabilitation", "Incontinence Care", "General Urology"]
+                name: "Dr Andrea Atkinson",
+                title: "Gynaecologist",
+                degrees: "Consultant Medical Specialists",
+                image: "./assets/images/Andrea_Atkinson.jpg", 
+                description: "Andrea is a Gynaecologist specialising in bladder conditions related to pelvic organ support, hormonal changes, and complex pelvic health issues. She provides expert input when urogynaecological factors contribute to persistent urinary and pelvic symptoms.",
+                specialties: ["Gynaecological contributors to urinary incontinence", "Pelvic organ prolapse and hormonal changes", "Genitourinary syndrome of menopause", "Female reproductive health conditions and infections", "Tropical diseases, ethical medicine, and global humanitarian aid"]
+            },
+            {
+                name: "Dr Eric Chu",
+                title: "Infectious Diseases Specialist",
+                degrees: "Somatic Syndrome Analytics",
+                image: "./assets/images/Eric_Chu.jpg", 
+                description: "Eric is an Infectious Diseases Specialist with expertise in the assessment and management of recurrent, resistant, and complex urinary tract infections. He supports independent diagnostic review, antimicrobial selection, and long‑term infection control strategies.",
+                specialties: ["Recurrent and resistant UTIs", "Antibiotic stewardship and minimising resistance", "Complex infections and multi‑system involvement", "Evidence‑based long‑term infection management"]
+            },
+            {
+                name: "Dr Ravi Agrawal",
+                title: "Pain Specialist",
+                degrees: "Mental Health Practitioners",
+                image: "./assets/images/Ravi_Agrawal.jpg", 
+                description: "Ravi is a Pain Specialist with experience in managing chronic pelvic and bladder‑related pain. He supports patients where pain persists despite treatment, using a multi-dimensional approach that recognises the interaction between the nervous system, psychological factors, bladder function, and chronic symptoms.",
+                specialties: ["Chronic Symptom Coping", "Psychological Contributor Scans", "Adverse Impact Processing"]
+            },
+            {
+                name: "Dr Laura Prates Vitoria",
+                title: "Pain Specialist",
+                degrees: "Allied Health Physical Rehabilitation",
+                image: "./assets/images/Laura_Prates.jpg", 
+                description: "Laura is a Pain Specialist and Anaesthetist with experience in managing chronic pelvic and bladder‑related pain. She supports patients where pain persists despite treatment, using a multi-dimensional approach that recognises the interaction between the nervous system, psychological factors, bladder function, and chronic symptoms.",
+                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management", "Functional improvement and quality of life"]
+                
+            },
+            {
+                name: "Cleofe Tejano Madryga",
+                title: "Nurse Practitioner",
+                degrees: "Consultant Medical Trackers",
+                image: "./assets/images/Cleofe_Tejano.png", 
+                description: "Cleofe is an AHPRA‑endorsed Nurse Practitioner with over 20 years’ experience in renal nursing and chronic disease management. She is passionate about integrative medicine, utilising a holistic, evidence-based approach that combines conventional Western medicine with complimentary therapies, focusing on the whole person - mind, body and spirit - rather than just symptoms. ",
+                specialties: ["Recurrent and complex UTIs", "Nutrition, gut, and metabolic function", "Chronic kidney disease and co‑morbid conditions", "Care coordination and patient education"]
+            },
+            {
+                name: "Nurse Practitioners and Nurses",
+                title: "Patient Intake & Care Coordination",
+                degrees: "Clinical Operations Team",
+                image: "./assets/images/nursing-placeholder.jpg", 
+                description: "Our dedicated nursing team conducts initial comprehensive triage history mapping, guides patient education, and coordinates ongoing care updates across all consulting divisions.",
+                specialties: ["Initial Triage Assessments", "Patient Education Programs", "Ongoing Care Follow-up"]
+            },
+            {
+                name: "Nurse Practitioners and Nurses",
+                title: "Patient Intake & Care Coordination",
+                degrees: "Clinical Operations Team",
+                image: "./assets/images/nursing-placeholder.jpg", 
+                description: "Our dedicated nursing team conducts initial comprehensive triage history mapping, guides patient education, and coordinates ongoing care updates across all consulting divisions.",
+                specialties: ["Initial Triage Assessments", "Patient Education Programs", "Ongoing Care Follow-up"]
+            },
+            {
+                name: "Nurse Practitioners and Nurses",
+                title: "Patient Intake & Care Coordination",
+                degrees: "Clinical Operations Team",
+                image: "./assets/images/nursing-placeholder.jpg", 
+                description: "Our dedicated nursing team conducts initial comprehensive triage history mapping, guides patient education, and coordinates ongoing care updates across all consulting divisions.",
+                specialties: ["Initial Triage Assessments", "Patient Education Programs", "Ongoing Care Follow-up"]
+            },
+            {
+                name: "Nurse Practitioners and Nurses",
+                title: "Patient Intake & Care Coordination",
+                degrees: "Clinical Operations Team",
+                image: "./assets/images/nursing-placeholder.jpg", 
+                description: "Our dedicated nursing team conducts initial comprehensive triage history mapping, guides patient education, and coordinates ongoing care updates across all consulting divisions.",
+                specialties: ["Initial Triage Assessments", "Patient Education Programs", "Ongoing Care Follow-up"]
+            },
+            {
+                name: "Nurse Practitioners and Nurses",
+                title: "Patient Intake & Care Coordination",
+                degrees: "Clinical Operations Team",
+                image: "./assets/images/nursing-placeholder.jpg", 
+                description: "Our dedicated nursing team conducts initial comprehensive triage history mapping, guides patient education, and coordinates ongoing care updates across all consulting divisions.",
+                specialties: ["Initial Triage Assessments", "Patient Education Programs", "Ongoing Care Follow-up"]
+            },
+            {
+                name: "Nurse Practitioners and Nurses",
+                title: "Patient Intake & Care Coordination",
+                degrees: "Clinical Operations Team",
+                image: "./assets/images/nursing-placeholder.jpg", 
+                description: "Our dedicated nursing team conducts initial comprehensive triage history mapping, guides patient education, and coordinates ongoing care updates across all consulting divisions.",
+                specialties: ["Initial Triage Assessments", "Patient Education Programs", "Ongoing Care Follow-up"]
             }
+			
         ];
 
         const routes = {
             '#/': `
                 <section class="py-12 sm:py-24 px-4 sm:px-6 md:px-12 text-center">
                     <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300/60 shadow-sm">Multidisciplinary Medical Care</span>
-                        <h1 class="text-3xl sm:text-6xl font-extrabold tracking-tight text-clinicDarkText max-w-3xl mx-auto leading-tight">Coordinated Care for Bladder & Pelvic Health</h1>
-                        <p class="text-slate-600 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed">Integrated clinical expertise bringing together urology, allied health, and specialised assessment for complex conditions.</p>
+                        <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white text-clinicCharcoal border border-clinicSage/40 shadow-sm">Multidisciplinary Medical Care</span>
+                        <h1 class="text-3xl sm:text-6xl font-extrabold tracking-tight text-clinicTerracotta max-w-3xl mx-auto leading-tight">Coordinated Care for Bladder & Pelvic Health</h1>
+                        <p class="text-clinicCharcoal text-base sm:text-xl max-w-2xl mx-auto leading-relaxed opacity-90">Integrated clinical expertise bringing together urology, allied health, and specialised assessment for complex conditions.</p>
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                            <a href="#/doctors" class="w-full sm:w-auto bg-clinicButton text-clinicDarkText px-8 py-3.5 rounded-full font-bold text-sm hover:bg-slate-300 transition shadow-md text-center border border-slate-300/40">Meet Our Specialists</a>
-                            <a href="#/pricing" class="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-8 py-3.5 rounded-full font-bold text-sm hover:bg-slate-50 transition shadow-sm text-center">View Fees & Pricing</a>
+                            <a href="#/doctors" class="w-full sm:w-auto bg-clinicTerracotta text-white px-8 py-3.5 rounded-full font-bold text-sm hover:bg-clinicTerracotta/90 transition shadow-md text-center">Meet Our Specialists</a>
+                            <a href="#/services" class="w-full sm:w-auto bg-white text-clinicCharcoal border border-clinicSage/30 px-8 py-3.5 rounded-full font-bold text-sm hover:bg-clinicCream transition shadow-sm text-center">Our Services</a>
                         </div>
                     </div>
                 </section>
             `,
             '#/doctors': `
                 <section class="py-12 px-4 sm:px-6 max-w-6xl mx-auto">
-                    <div class="text-center max-w-3xl mx-auto mb-12">
-                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight">Our Medical Specialists</h2>
-                        <p class="text-slate-600 mt-2 text-sm sm:text-base">Clinicians can be added or removed dynamically from our configuration layout instantly.</p>
+                    <div class="text-center max-w-3xl mx-auto mb-10">
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicTerracotta tracking-tight">Our Multidisciplinary Team</h2>
+                        <p class="text-clinicCharcoal mt-2 text-sm sm:text-base opacity-85">Our clinic maps comprehensive, shared planning paths across several distinct specialties.</p>
+                        <div class="w-24 h-1 bg-clinicSage mx-auto mt-4 rounded-full"></div>
                     </div>
-                    <div id="doctors-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"></div>
+
+                    <div class="w-full max-w-5xl mx-auto mb-16 rounded-2xl overflow-hidden shadow-md border-4 border-white bg-white">
+                        <img src="./assets/images/dr_main.jpg" alt="The Bladder Clinic Medical Staff Team" class="w-full h-auto object-cover">
+                    </div>
+
+                    <div id="doctors-grid" class="grid grid-cols-1 gap-8 max-w-5xl mx-auto"></div>
                 </section>
             `,
             '#/services': `
                 <section class="py-12 px-4 sm:px-6 max-w-6xl mx-auto">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <span class="text-xs font-bold uppercase tracking-widest text-clinicDarkText bg-white px-3 py-1 rounded-full border border-slate-200">Clinical Architecture</span>
-                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight mt-3">Multidisciplinary Model of Care</h2>
-                        <p class="text-slate-600 mt-2 text-sm sm:text-base">Our clinic targets complex, recurrent bladder and pelvic symptoms through integrated specialty pathways.</p>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white bg-clinicSage px-4 py-1.5 rounded-full shadow-sm">Clinical Architecture</span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicTerracotta tracking-tight mt-3">Multidisciplinary Model of Care</h2>
+                        <p class="text-clinicCharcoal mt-2 text-sm sm:text-base opacity-85">Our clinic targets complex, recurrent bladder and pelvic symptoms through integrated specialty pathways.</p>
                     </div>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
-                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-clinicDarkText flex items-center justify-center font-bold mb-4">01</div>
-                            <h3 class="text-lg font-bold text-clinicDarkText mb-2">Urinary Tract Infections</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">Management of persistent, chronic, or recurrent bladder inflammation and resistant urinary tract strains.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-clinicSage/20 shadow-sm hover:bg-clinicRose/10 transition duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-clinicCream text-clinicTerracotta flex items-center justify-center font-bold mb-4 border border-clinicSage/20">01</div>
+                            <h3 class="text-lg font-bold text-clinicCharcoal mb-2">Urinary Tract Infections</h3>
+                            <p class="text-sm text-clinicCharcoal/80 leading-relaxed">Management of persistent, chronic, or recurrent bladder inflammation and resistant urinary tract strains.</p>
                         </div>
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
-                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-clinicDarkText flex items-center justify-center font-bold mb-4">02</div>
-                            <h3 class="text-lg font-bold text-clinicDarkText mb-2">Urogenital Abnormalities</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">Comprehensive specialist evaluation of physical, structural, or functional conditions altering bladder, uterus, or prostate anatomy.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-clinicSage/20 shadow-sm hover:bg-clinicRose/10 transition duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-clinicCream text-clinicTerracotta flex items-center justify-center font-bold mb-4 border border-clinicSage/20">02</div>
+                            <h3 class="text-lg font-bold text-clinicCharcoal mb-2">Urogenital Abnormalities</h3>
+                            <p class="text-sm text-clinicCharcoal/80 leading-relaxed">Comprehensive specialist evaluation of physical, structural, or functional conditions altering bladder, uterus, or prostate anatomy.</p>
                         </div>
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
-                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-clinicDarkText flex items-center justify-center font-bold mb-4">03</div>
-                            <h3 class="text-lg font-bold text-clinicDarkText mb-2">Pelvic Floor Dysfunction</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">Targeted physical muscle rehabilitation maps and coordinate diagnostics for functional pelvic structural support issues.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-clinicSage/20 shadow-sm hover:bg-clinicRose/10 transition duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-clinicCream text-clinicTerracotta flex items-center justify-center font-bold mb-4 border border-clinicSage/20">03</div>
+                            <h3 class="text-lg font-bold text-clinicCharcoal mb-2">Pelvic Floor Dysfunction</h3>
+                            <p class="text-sm text-clinicCharcoal/80 leading-relaxed">Targeted physical muscle rehabilitation maps and coordinate diagnostics for functional pelvic structural support issues.</p>
                         </div>
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
-                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-clinicDarkText flex items-center justify-center font-bold mb-4">04</div>
-                            <h3 class="text-lg font-bold text-clinicDarkText mb-2">Neuropathic Pain Mechanisms</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">Management of complex, centralized chronic pain matrices impacting bladder functionality and neurological nerve roots.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-clinicSage/20 shadow-sm hover:bg-clinicRose/10 transition duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-clinicCream text-clinicTerracotta flex items-center justify-center font-bold mb-4 border border-clinicSage/20">04</div>
+                            <h3 class="text-lg font-bold text-clinicCharcoal mb-2">Neuropathic Pain Mechanisms</h3>
+                            <p class="text-sm text-clinicCharcoal/80 leading-relaxed">Management of complex, centralized chronic pain matrices impacting bladder functionality and neurological nerve roots.</p>
                         </div>
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
-                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-clinicDarkText flex items-center justify-center font-bold mb-4">05</div>
-                            <h3 class="text-lg font-bold text-clinicDarkText mb-2">Hormonal & Inflammatory Shifts</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">Identifying functional links regarding autoimmune conditions, endocrine tissue transitions, and structural cellular shifts.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-clinicSage/20 shadow-sm hover:bg-clinicRose/10 transition duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-clinicCream text-clinicTerracotta flex items-center justify-center font-bold mb-4 border border-clinicSage/20">05</div>
+                            <h3 class="text-lg font-bold text-clinicCharcoal mb-2">Hormonal & Inflammatory Shifts</h3>
+                            <p class="text-sm text-clinicCharcoal/80 leading-relaxed">Identifying functional links regarding autoimmune conditions, endocrine tissue transitions, and structural cellular shifts.</p>
                         </div>
-                        <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
-                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-clinicDarkText flex items-center justify-center font-bold mb-4">06</div>
-                            <h3 class="text-lg font-bold text-clinicDarkText mb-2">Coordinated Nurse Triage</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">All patients undergo a foundational initial history mapping assessment with a clinical Nurse Practitioner to optimize referral accuracy.</p>
+                        <div class="bg-white p-6 rounded-2xl border border-clinicSage/20 shadow-sm hover:bg-clinicRose/10 transition duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-clinicCream text-clinicTerracotta flex items-center justify-center font-bold mb-4 border border-clinicSage/20">06</div>
+                            <h3 class="text-lg font-bold text-clinicCharcoal mb-2">Coordinated Nurse Triage</h3>
+                            <p class="text-sm text-clinicCharcoal/80 leading-relaxed">All patients undergo a foundational initial history mapping assessment with a clinical Nurse Practitioner to optimize referral accuracy.</p>
                         </div>
                     </div>
                 </section>
@@ -285,119 +355,102 @@
             '#/pricing': `
                 <section class="py-12 px-4 sm:px-6 max-w-4xl mx-auto">
                     <div class="text-center mb-12">
-                        <span class="text-xs font-bold uppercase tracking-widest text-clinicDarkText bg-white px-3 py-1 rounded-full border border-slate-200">Medicare Outlines</span>
-                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight mt-3">Consultation Fees & Rebates</h2>
-                        <p class="text-slate-600 mt-2 text-sm sm:text-base">The Bladder Clinic utilizes a structured medical intake tier. Medicare rebates apply to consultations with a valid GP referral letter.</p>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white bg-clinicSage px-4 py-1.5 rounded-full shadow-sm">Medicare Outlines</span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicTerracotta tracking-tight mt-4">Consultation Fees & Rebates</h2>
+                        <p class="text-clinicCharcoal mt-2 text-sm sm:text-base opacity-85">The Bladder Clinic utilizes a structured medical intake tier. Medicare rebates apply to consultations with a valid GP referral letter.</p>
                     </div>
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200/60 divide-y divide-slate-100 overflow-hidden">
-                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white">
+                    
+                    <div class="bg-white rounded-2xl shadow-sm border border-clinicSage/30 divide-y divide-clinicCream overflow-hidden">
+                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white hover:bg-clinicRose/10 transition">
                             <div>
-                                <span class="block font-bold text-slate-800">Initial Nurse Practitioner Assessment</span>
+                                <span class="block font-bold text-clinicCharcoal">Initial Nurse Practitioner Assessment</span>
                                 <span class="text-xs text-slate-400 block sm:inline">Comprehensive baseline history charting and clinical diagnostic triage mapping.</span>
                             </div>
-                            <span class="font-extrabold text-slate-800 text-lg sm:text-xl whitespace-nowrap">$140.00</span>
+                            <span class="font-extrabold text-clinicTerracotta text-lg sm:text-xl whitespace-nowrap">$140.00</span>
                         </div>
-                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white">
+                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white hover:bg-clinicRose/10 transition">
                             <div>
-                                <span class="block font-bold text-slate-800">Senior Consultant Specialist Visit</span>
+                                <span class="block font-bold text-clinicCharcoal">Senior Consultant Specialist Visit</span>
                                 <span class="text-xs text-slate-400 block sm:inline">Direct specialist review across Urology, Gynaecology, or Pain Medicine tracks.</span>
                             </div>
-                            <span class="font-extrabold text-slate-800 text-lg sm:text-xl whitespace-nowrap">$295.00</span>
+                            <span class="font-extrabold text-clinicTerracotta text-lg sm:text-xl whitespace-nowrap">$295.00</span>
                         </div>
-                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white">
+                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white hover:bg-clinicRose/10 transition">
                             <div>
-                                <span class="block font-bold text-slate-800">Pelvic Health Physiotherapy Review</span>
+                                <span class="block font-bold text-clinicCharcoal">Pelvic Health Physiotherapy Review</span>
                                 <span class="text-xs text-slate-400 block sm:inline">Targeted functional assessment and muscle framework mechanics planning.</span>
                             </div>
-                            <span class="font-extrabold text-slate-800 text-lg sm:text-xl whitespace-nowrap">$165.00</span>
+                            <span class="font-extrabold text-clinicTerracotta text-lg sm:text-xl whitespace-nowrap">$165.00</span>
                         </div>
-                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white">
+                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white hover:bg-clinicRose/10 transition">
                             <div>
-                                <span class="block font-bold text-slate-800">Clinical Psychology Consultation</span>
+                                <span class="block font-bold text-clinicCharcoal">Clinical Psychology Consultation</span>
                                 <span class="text-xs text-slate-400 block sm:inline">Evaluating neurological nerve root drivers and somatic symptom adaptation profiles.</span>
                             </div>
-                            <span class="font-extrabold text-slate-800 text-lg sm:text-xl whitespace-nowrap">$210.00</span>
+                            <span class="font-extrabold text-clinicTerracotta text-lg sm:text-xl whitespace-nowrap">$210.00</span>
                         </div>
                     </div>
-                    <div class="mt-6 bg-white/40 rounded-xl p-4 border border-slate-300/60 text-xs text-slate-600 leading-relaxed">
-                        <strong>Please Note:</strong> Reduced baseline billing concessions may be applicable for valid Pension or Health Care Card holders upon direct presentation to clinic administration. Veteran's Affairs Gold Card assignments are fully processed under DVA schedules.
+                    
+                    <div class="mt-6 bg-white rounded-xl p-5 border-l-4 border-clinicOchre text-xs text-clinicCharcoal leading-relaxed shadow-sm">
+                        <strong class="text-clinicOchre font-bold text-sm block mb-1">Please Note:</strong> 
+                        Reduced baseline billing concessions may be applicable for valid Pension or Health Care Card holders upon direct presentation to clinic administration. Veteran's Affairs Gold Card assignments are fully processed under DVA schedules.
                     </div>
                 </section>
             `,
             '#/contact': `
                 <section class="py-12 px-4 sm:px-6 max-w-7xl mx-auto">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight">Contact Our Team</h2>
-                        <p class="text-slate-600 mt-2 text-sm sm:text-base">Reach out below to submit a message to our reception desk or locate our facility in Mount Hawthorn.</p>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicTerracotta tracking-tight">Contact Our Team</h2>
+                        <p class="text-clinicCharcoal mt-2 text-sm sm:text-base opacity-85">Reach out below to submit a message to our reception desk or locate our facility in Mount Hawthorn.</p>
                     </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                        
                         <div class="lg:col-span-5 space-y-6 sm:space-y-8">
-                            <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm space-y-4">
-                                <h3 class="text-lg font-bold text-clinicDarkText border-b border-slate-100 pb-2">Clinic Operations</h3>
-                                
+                            <div class="bg-white p-6 rounded-2xl border border-clinicSage/20 shadow-sm space-y-4">
+                                <h3 class="text-lg font-bold text-clinicTerracotta border-b border-clinicCream pb-2">Clinic Operations</h3>
                                 <div>
-                                    <span class="block text-xs font-bold uppercase text-slate-400">Street Address</span>
-                                    <span class="text-sm font-semibold text-slate-700">249 Scarborough Beach Rd, Mount Hawthorn WA 6016</span>
+                                    <span class="block text-xs font-bold uppercase text-clinicSage">Street Address</span>
+                                    <span class="text-sm font-semibold text-clinicCharcoal">249 Scarborough Beach Rd, Mount Hawthorn WA 6016</span>
                                 </div>
-                                
                                 <div>
-                                    <span class="block text-xs font-bold uppercase text-slate-400">Communication Channels</span>
-                                    <span class="text-sm block font-bold text-slate-800">Phone: 08 6555 6516</span>
-                                    <span class="text-sm block text-slate-600">Email: emailus@bladder-clinic.com</span>
+                                    <span class="block text-xs font-bold uppercase text-clinicSage">Communication Channels</span>
+                                    <span class="text-sm block font-bold text-clinicTerracotta">Phone: 08 6555 6516</span>
+                                    <span class="text-sm block text-clinicCharcoal opacity-90">Email: emailus@bladder-clinic.com</span>
                                 </div>
-                                
                                 <div>
-                                    <span class="block text-xs font-bold uppercase text-slate-400">Standard Consulting Hours</span>
-                                    <span class="text-sm block text-slate-700">Monday to Friday: 9:00 AM – 4:00 PM</span>
+                                    <span class="block text-xs font-bold uppercase text-clinicSage">Standard Consulting Hours</span>
+                                    <span class="text-sm block text-clinicCharcoal">Monday to Friday: 9:00 AM – 4:00 PM</span>
                                     <span class="text-sm block text-slate-400">Saturday, Sunday & Public Holidays: Closed</span>
                                 </div>
                             </div>
                             
-                            <div class="w-full h-64 sm:h-80 rounded-2xl overflow-hidden shadow-sm border border-slate-300/60 bg-white">
-<iframe 
-    src="https://maps.google.com/maps?q=249%20Scarborough%20Beach%20Rd,%20Mount%20Hawthorn%20WA%206016&t=&z=15&ie=UTF-8&iwloc=&output=embed" 
-    width="100%" 
-    height="100%" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+                            <div class="w-full h-64 sm:h-80 rounded-2xl overflow-hidden shadow-sm border border-clinicSage/20 bg-white">
+                                <iframe src="https://maps.google.com/maps?q=249%20Scarborough%20Beach%20Rd,%20Mount%20Hawthorn%20WA%206016&t=&z=15&ie=UTF-8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
 
                         <div class="lg:col-span-7">
-                            <form onsubmit="submitContactForm(event)" class="space-y-6 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+                            <form onsubmit="submitContactForm(event)" class="space-y-6 bg-white p-6 sm:p-8 rounded-2xl border border-clinicSage/20 shadow-sm">
                                 <input type="hidden" id="form-access-key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
-
                                 <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Patient Full Name</label>
-                                    <input type="text" id="form-name" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-slate-400 transition" placeholder="John Doe">
+                                    <label class="block text-sm font-semibold text-clinicCharcoal mb-2">Patient Full Name</label>
+                                    <input type="text" id="form-name" required class="w-full px-4 py-2.5 rounded-lg border border-clinicCream bg-clinicCream/30 focus:outline-none focus:border-clinicTerracotta text-clinicCharcoal transition" placeholder="John Doe">
                                 </div>
-                                
                                 <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-                                    <input type="email" id="form-email" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-slate-400 transition" placeholder="john@example.com">
+                                    <label class="block text-sm font-semibold text-clinicCharcoal mb-2">Email Address</label>
+                                    <input type="email" id="form-email" required class="w-full px-4 py-2.5 rounded-lg border border-clinicCream bg-clinicCream/30 focus:outline-none focus:border-clinicTerracotta text-clinicCharcoal transition" placeholder="john@example.com">
                                 </div>
-                                
                                 <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Contact Number</label>
-                                    <input type="number" id="form-phone" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-slate-400 transition" placeholder="0412345678">
+                                    <label class="block text-sm font-semibold text-clinicCharcoal mb-2">Contact Number</label>
+                                    <input type="number" id="form-phone" required class="w-full px-4 py-2.5 rounded-lg border border-clinicCream bg-clinicCream/30 focus:outline-none focus:border-clinicTerracotta text-clinicCharcoal transition" placeholder="0412345678">
                                 </div>
-                                
                                 <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Message Note</label>
-                                    <textarea id="form-message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-slate-400 transition" placeholder="Please outline details..."></textarea>
+                                    <label class="block text-sm font-semibold text-clinicCharcoal mb-2">Message Note</label>
+                                    <textarea id="form-message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-clinicCream bg-clinicCream/30 focus:outline-none focus:border-clinicTerracotta text-clinicCharcoal transition" placeholder="Please outline details..."></textarea>
                                 </div>
-                                
-                                <button type="submit" id="form-submit-btn" class="w-full bg-clinicButton text-clinicDarkText py-3 rounded-lg font-bold hover:bg-slate-300 transition shadow-sm border border-slate-300/40">
-                                    Send Message Request
-                                </button>
+                                <button type="submit" id="form-submit-btn" class="w-full bg-clinicTerracotta text-white py-3 rounded-lg font-bold hover:bg-clinicTerracotta/90 transition shadow-sm">Send Message Request</button>
                             </form>
                         </div>
-                        
                     </div>
                 </section>
             `
@@ -405,51 +458,60 @@
 
         function router() {
             let hash = window.location.hash || '#/';
-            
-            if (!routes[hash]) {
-                hash = '#/';
-            }
+            if (!routes[hash]) { hash = '#/'; }
 
             const container = document.getElementById('app-view');
-            
             container.classList.remove('fade-in');
             void container.offsetWidth; 
             container.classList.add('fade-in');
-            
             container.innerHTML = routes[hash];
 
-            if (hash === '#/doctors') {
+if (hash === '#/doctors') {
                 const grid = document.getElementById('doctors-grid');
+                
                 grid.innerHTML = clinicDoctors.map(doc => `
-                    <div class="bg-white rounded-2xl border border-slate-200/60 p-6 shadow-sm flex flex-col sm:flex-row gap-6 items-start">
-                        <img src="${doc.image}" alt="${doc.name}" class="w-full sm:w-32 h-32 object-cover rounded-xl bg-slate-50 shadow-inner">
-                        <div class="flex-grow w-full">
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">${doc.title}</span>
-                            <h3 class="text-xl font-bold text-clinicDarkText mt-0.5">${doc.name}</h3>
-                            <p class="text-xs font-semibold text-slate-400">${doc.degrees}</p>
-                            <div class="mt-4 flex flex-wrap gap-1">
-                                ${doc.specialties.map(spec => `<span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">${spec}</span>`).join('')}
+                    <div class="bg-white rounded-2xl border border-clinicSage/20 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row gap-6 items-start hover:bg-clinicRose/10 transition duration-300">
+                        
+                        <div class="w-full md:w-32 h-42 rounded-xl overflow-hidden bg-clinicCream border border-clinicSage/20 shadow-inner shrink-0 flex items-center justify-center">
+                            ${doc.image ? `
+                                <img src="${doc.image}" alt="${doc.name}" class="w-full h-full object-cover">
+                            ` : `
+                                <span class="text-[10px] font-bold text-clinicSage tracking-wider uppercase text-center p-2">Photo Coming Soon</span>
+                            `}
+                        </div>
+                        
+                        <div class="flex-grow w-full space-y-2">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-clinicSage">${doc.title}</span>
+                                <h3 class="text-2xl font-bold text-clinicTerracotta mt-0.5">${doc.name}</h3>
+                                <p class="text-xs font-semibold text-clinicCharcoal/60">${doc.degrees}</p>
+                            </div>
+                            
+                            <p class="text-sm text-clinicCharcoal/90 leading-relaxed pt-1">
+                                ${doc.description}
+                            </p>
+                            
+                            <div class="pt-2 flex flex-wrap gap-1.5">
+                                ${doc.specialties.map(spec => `<span class="text-[10px] bg-clinicCream border border-clinicSage/20 text-clinicCharcoal font-semibold px-2.5 py-1 rounded-md shadow-sm">${spec}</span>`).join('')}
                             </div>
                         </div>
                     </div>
                 `).join('');
             }
 
-            // Sync Desktop Nav Pill Classes
             document.querySelectorAll('#spa-nav a').forEach(navLink => {
                 if (navLink.getAttribute('href') === hash) {
-                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-semibold transition text-clinicDarkText bg-white shadow-sm";
+                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-clinicCharcoal bg-clinicCream shadow-sm";
                 } else {
-                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-600 hover:text-clinicDarkText";
+                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-white hover:text-clinicCream";
                 }
             });
 
-            // Sync Mobile Overlay Dynamic Text Classes
             document.querySelectorAll('#spa-nav-mobile a').forEach(navLink => {
                 if (navLink.getAttribute('href') === hash) {
-                    navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-clinicDarkText bg-slate-100";
+                    navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-white bg-clinicTerracotta shadow-sm";
                 } else {
-                    navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700 hover:bg-slate-50";
+                    navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-clinicCharcoal hover:bg-clinicRose/20";
                 }
             });
         }
