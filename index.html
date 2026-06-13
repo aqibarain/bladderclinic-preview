@@ -10,10 +10,10 @@
             theme: {
                 extend: {
                     colors: {
-                        clinicHeader: '#b1c4d4', /* New Light Blue-Grey Header */
-                        clinicMain: '#e3ebe5',   /* New Light Grey-Green Main Background */
-                        clinicButton: '#b1c4d4', /* New Button Color */
-                        clinicDarkText: '#0f172a', /* Slate 900 for high-contrast text */
+                        clinicHeader: '#b1c4d4', 
+                        clinicMain: '#e3ebe5',   
+                        clinicButton: '#b1c4d4', 
+                        clinicDarkText: '#0f172a', 
                     }
                 }
             }
@@ -66,6 +66,16 @@
                 }
             }
         }
+
+        // MOBILE NAVIGATION DRAWER TOGGLES
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.add('hidden');
+        }
     </script>
     <style>
         .fade-in { animation: fadeIn 0.3s ease-in-out forwards; }
@@ -81,38 +91,54 @@
         <span>Enquiry sent successfully. We will call you shortly.</span>
     </div>
 
-    <header class="w-full bg-clinicHeader text-clinicDarkText py-4 px-6 md:px-12 sticky top-0 z-50 border-b border-slate-300/50 shadow-md">
+    <header class="w-full bg-clinicHeader text-clinicDarkText py-4 px-4 md:px-12紧 sticky top-0 z-50 border-b border-slate-300/50 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             
-            <a href="#/" class="flex items-center space-x-3 group">
+            <a href="#/" onclick="closeMobileMenu()" class="flex items-center space-x-2 md:space-x-3 group">
                 <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center font-bold text-clinicDarkText shadow-sm group-hover:scale-105 transition">
                     B
                 </div>
-                <span class="text-lg font-bold tracking-tight uppercase text-clinicDarkText">The Bladder <span class="text-white">Clinic</span></span>
+                <span class="text-base md:text-lg font-bold tracking-tight uppercase text-clinicDarkText">The Bladder <span class="text-white">Clinic</span></span>
             </a>
             
             <nav id="spa-nav" class="hidden md:flex items-center bg-white/60 border border-white/40 rounded-full px-2 py-1.5 backdrop-blur-sm shadow-sm">
-                <a href="#/" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-clinicDarkText bg-white shadow-sm">Home</a>
-                <a href="#/doctors" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-700 hover:text-clinicDarkText">Doctors</a>
-                <a href="#/services" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-700 hover:text-clinicDarkText">Services</a>
-                <a href="#/pricing" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-700 hover:text-clinicDarkText">Pricing</a>
-                <a href="#/contact" class="px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-700 hover:text-clinicDarkText">Contact</a>
+                <a href="#/" class="px-4 py-1.5 rounded-full text-sm font-semibold transition">Home</a>
+                <a href="#/doctors" class="px-4 py-1.5 rounded-full text-sm font-semibold transition">Doctors</a>
+                <a href="#/services" class="px-4 py-1.5 rounded-full text-sm font-semibold transition">Services</a>
+                <a href="#/pricing" class="px-4 py-1.5 rounded-full text-sm font-semibold transition">Pricing</a>
+                <a href="#/contact" class="px-4 py-1.5 rounded-full text-sm font-semibold transition">Contact</a>
             </nav>
             
-            <div>
-                <a href="#/contact" class="bg-white text-clinicDarkText text-xs md:text-sm px-5 py-2.5 rounded-full font-bold hover:bg-slate-50 transition shadow-sm border border-slate-200/40 whitespace-nowrap">
+            <div class="flex items-center space-x-4">
+                <a href="#/contact" class="hidden sm:inline-block bg-white text-clinicDarkText text-xs md:text-sm px-5 py-2.5 rounded-full font-bold hover:bg-slate-50 transition shadow-sm border border-slate-200/40 whitespace-nowrap">
                     Make Enquiry
                 </a>
+                
+                <button onclick="toggleMobileMenu()" class="md:hidden block text-clinicDarkText focus:outline-none p-1 bg-white/40 rounded-lg border border-white/40" aria-label="Toggle Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
 
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white/95 rounded-2xl p-4 border border-slate-200 shadow-xl backdrop-blur-md absolute left-4 right-4 top-16 fade-in">
+            <nav id="spa-nav-mobile" class="flex flex-col space-y-2">
+                <a href="#/" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-clinicDarkText bg-slate-100">Home</a>
+                <a href="#/doctors" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700">Doctors</a>
+                <a href="#/services" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700">Services</a>
+                <a href="#/pricing" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700">Pricing</a>
+                <a href="#/contact" onclick="closeMobileMenu()" class="px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700">Contact</a>
+            </nav>
         </div>
     </header>
 
     <main id="app-view" class="flex-grow fade-in bg-clinicMain"></main>
 
     <footer class="bg-clinicHeader text-slate-700 text-xs py-8 px-6 border-t border-slate-300/50">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <p class="font-medium">© 2026 The Bladder Clinic. All rights reserved.</p>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <p class="font-medium w-full md:w-auto">© 2026 The Bladder Clinic. All rights reserved.</p>
         </div>
     </footer>
 
@@ -136,36 +162,36 @@
 
         const routes = {
             '#/': `
-                <section class="py-24 px-6 md:px-12 text-center">
-                    <div class="max-w-4xl mx-auto space-y-8">
+                <section class="py-12 sm:py-24 px-4 sm:px-6 md:px-12 text-center">
+                    <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300/60 shadow-sm">Multidisciplinary Medical Care</span>
-                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-none text-clinicDarkText max-w-3xl mx-auto">Coordinated Specialist Care for Bladder & Pelvic Health</h1>
-                        <p class="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">Integrated clinical expertise bringing together urology, allied health, and specialised assessment for complex conditions.</p>
+                        <h1 class="text-3xl sm:text-6xl font-extrabold tracking-tight text-clinicDarkText max-w-3xl mx-auto leading-tight">Coordinated Care for Bladder & Pelvic Health</h1>
+                        <p class="text-slate-600 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed">Integrated clinical expertise bringing together urology, allied health, and specialised assessment for complex conditions.</p>
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                             <a href="#/doctors" class="w-full sm:w-auto bg-clinicButton text-clinicDarkText px-8 py-3.5 rounded-full font-bold text-sm hover:bg-slate-300 transition shadow-md text-center border border-slate-300/40">Meet Our Specialists</a>
-                            <a href="#/pricing" class="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 text-slate-700 px-8 py-3.5 rounded-full font-bold text-sm hover:bg-slate-50 transition shadow-sm text-center">View Fees & Pricing</a>
+                            <a href="#/pricing" class="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-8 py-3.5 rounded-full font-bold text-sm hover:bg-slate-50 transition shadow-sm text-center">View Fees & Pricing</a>
                         </div>
                     </div>
                 </section>
             `,
             '#/doctors': `
-                <section class="py-16 px-6 max-w-6xl mx-auto">
-                    <div class="text-center max-w-3xl mx-auto mb-16">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight">Our Medical Specialists</h2>
-                        <p class="text-slate-600 mt-3">Easily adding or removing clinicians from our internal config array updates this display instantly.</p>
+                <section class="py-12 px-4 sm:px-6 max-w-6xl mx-auto">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight">Our Medical Specialists</h2>
+                        <p class="text-slate-600 mt-2 text-sm sm:text-base">Clinicians can be added or removed dynamically from our configuration layout instantly.</p>
                     </div>
-                    <div id="doctors-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+                    <div id="doctors-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"></div>
                 </section>
             `,
             '#/services': `
-                <section class="py-16 px-6 max-w-6xl mx-auto">
-                    <div class="text-center max-w-3xl mx-auto mb-16">
+                <section class="py-12 px-4 sm:px-6 max-w-6xl mx-auto">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
                         <span class="text-xs font-bold uppercase tracking-widest text-clinicDarkText bg-white px-3 py-1 rounded-full border border-slate-200">Clinical Architecture</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight mt-3">Multidisciplinary Model of Care</h2>
-                        <p class="text-slate-600 mt-3">Our clinic targets complex, recurrent bladder and pelvic symptoms through integrated specialty pathways.</p>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight mt-3">Multidisciplinary Model of Care</h2>
+                        <p class="text-slate-600 mt-2 text-sm sm:text-base">Our clinic targets complex, recurrent bladder and pelvic symptoms through integrated specialty pathways.</p>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                         <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm">
                             <div class="w-10 h-10 rounded-xl bg-slate-100 text-clinicDarkText flex items-center justify-center font-bold mb-4">01</div>
                             <h3 class="text-lg font-bold text-clinicDarkText mb-2">Urinary Tract Infections</h3>
@@ -200,40 +226,40 @@
                 </section>
             `,
             '#/pricing': `
-                <section class="py-16 px-6 max-w-4xl mx-auto">
+                <section class="py-12 px-4 sm:px-6 max-w-4xl mx-auto">
                     <div class="text-center mb-12">
                         <span class="text-xs font-bold uppercase tracking-widest text-clinicDarkText bg-white px-3 py-1 rounded-full border border-slate-200">Medicare Outlines</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight mt-3">Consultation Fees & Rebates</h2>
-                        <p class="text-slate-600 mt-3">The Bladder Clinic utilizes a structured medical intake tier. Medicare rebates apply to standard provider consultations with a valid GP referral letter.</p>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight mt-3">Consultation Fees & Rebates</h2>
+                        <p class="text-slate-600 mt-2 text-sm sm:text-base">The Bladder Clinic utilizes a structured medical intake tier. Medicare rebates apply to consultations with a valid GP referral letter.</p>
                     </div>
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-200/60 divide-y divide-slate-100 overflow-hidden">
-                        <div class="p-6 flex justify-between items-center bg-white">
+                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white">
                             <div>
                                 <span class="block font-bold text-slate-800">Initial Nurse Practitioner Assessment</span>
-                                <span class="text-xs text-slate-400">Comprehensive baseline history charting and clinical diagnostic triage mapping.</span>
+                                <span class="text-xs text-slate-400 block sm:inline">Comprehensive baseline history charting and clinical diagnostic triage mapping.</span>
                             </div>
-                            <span class="font-extrabold text-slate-800 text-lg">$140.00</span>
+                            <span class="font-extrabold text-slate-800 text-lg sm:text-xl whitespace-nowrap">$140.00</span>
                         </div>
-                        <div class="p-6 flex justify-between items-center bg-white">
+                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white">
                             <div>
                                 <span class="block font-bold text-slate-800">Senior Consultant Specialist Visit</span>
-                                <span class="text-xs text-slate-400">Direct specialist review across Urology, Gynaecology, or Pain Medicine tracks.</span>
+                                <span class="text-xs text-slate-400 block sm:inline">Direct specialist review across Urology, Gynaecology, or Pain Medicine tracks.</span>
                             </div>
-                            <span class="font-extrabold text-slate-800 text-lg">$295.00</span>
+                            <span class="font-extrabold text-slate-800 text-lg sm:text-xl whitespace-nowrap">$295.00</span>
                         </div>
-                        <div class="p-6 flex justify-between items-center bg-white">
+                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white">
                             <div>
                                 <span class="block font-bold text-slate-800">Pelvic Health Physiotherapy Review</span>
-                                <span class="text-xs text-slate-400">Targeted functional assessment and muscle framework mechanics planning.</span>
+                                <span class="text-xs text-slate-400 block sm:inline">Targeted functional assessment and muscle framework mechanics planning.</span>
                             </div>
-                            <span class="font-extrabold text-slate-800 text-lg">$165.00</span>
+                            <span class="font-extrabold text-slate-800 text-lg sm:text-xl whitespace-nowrap">$165.00</span>
                         </div>
-                        <div class="p-6 flex justify-between items-center bg-white">
+                        <div class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-white">
                             <div>
                                 <span class="block font-bold text-slate-800">Clinical Psychology Consultation</span>
-                                <span class="text-xs text-slate-400">Evaluating neurological nerve root drivers and somatic symptom adaptation profiles.</span>
+                                <span class="text-xs text-slate-400 block sm:inline">Evaluating neurological nerve root drivers and somatic adaptation profiles.</span>
                             </div>
-                            <span class="font-extrabold text-slate-800 text-lg">$210.00</span>
+                            <span class="font-extrabold text-slate-800 text-lg sm:text-xl whitespace-nowrap">$210.00</span>
                         </div>
                     </div>
                     <div class="mt-6 bg-white/40 rounded-xl p-4 border border-slate-300/60 text-xs text-slate-600 leading-relaxed">
@@ -242,15 +268,15 @@
                 </section>
             `,
             '#/contact': `
-                <section class="py-16 px-6 max-w-7xl mx-auto">
+                <section class="py-12 px-4 sm:px-6 max-w-7xl mx-auto">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <h2 class="text-3xl font-extrabold text-clinicDarkText tracking-tight">Contact Our Team</h2>
-                        <p class="text-slate-600 mt-2">Reach out below to submit a message to our reception desk or locate our facility in Mount Hawthorn.</p>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-clinicDarkText tracking-tight">Contact Our Team</h2>
+                        <p class="text-slate-600 mt-2 text-sm sm:text-base">Reach out below to submit a message to our reception desk or locate our facility in Mount Hawthorn.</p>
                     </div>
                     
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                         
-                        <div class="lg:col-span-5 space-y-8">
+                        <div class="lg:col-span-5 space-y-6 sm:space-y-8">
                             <div class="bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm space-y-4">
                                 <h3 class="text-lg font-bold text-clinicDarkText border-b border-slate-100 pb-2">Clinic Operations</h3>
                                 
@@ -272,7 +298,7 @@
                                 </div>
                             </div>
                             
-                            <div class="w-full h-80 rounded-2xl overflow-hidden shadow-sm border border-slate-300/60 bg-white">
+                            <div class="w-full h-64 sm:h-80 rounded-2xl overflow-hidden shadow-sm border border-slate-300/60 bg-white">
 <iframe 
     src="https://maps.google.com/maps?q=249%20Scarborough%20Beach%20Rd,%20Mount%20Hawthorn%20WA%206016&t=&z=15&ie=UTF-8&iwloc=&output=embed" 
     width="100%" 
@@ -286,7 +312,7 @@
                         </div>
 
                         <div class="lg:col-span-7">
-                            <form onsubmit="submitContactForm(event)" class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+                            <form onsubmit="submitContactForm(event)" class="space-y-6 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
                                 <input type="hidden" id="form-access-key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
 
                                 <div>
@@ -340,7 +366,7 @@
                 grid.innerHTML = clinicDoctors.map(doc => `
                     <div class="bg-white rounded-2xl border border-slate-200/60 p-6 shadow-sm flex flex-col sm:flex-row gap-6 items-start">
                         <img src="${doc.image}" alt="${doc.name}" class="w-full sm:w-32 h-32 object-cover rounded-xl bg-slate-50 shadow-inner">
-                        <div class="flex-grow">
+                        <div class="flex-grow w-full">
                             <span class="text-xs font-bold uppercase tracking-wider text-slate-500">${doc.title}</span>
                             <h3 class="text-xl font-bold text-clinicDarkText mt-0.5">${doc.name}</h3>
                             <p class="text-xs font-semibold text-slate-400">${doc.degrees}</p>
@@ -352,11 +378,21 @@
                 `).join('');
             }
 
+            // Sync Desktop Nav Pill Classes
             document.querySelectorAll('#spa-nav a').forEach(navLink => {
                 if (navLink.getAttribute('href') === hash) {
                     navLink.className = "px-4 py-1.5 rounded-full text-sm font-semibold transition text-clinicDarkText bg-white shadow-sm";
                 } else {
                     navLink.className = "px-4 py-1.5 rounded-full text-sm font-semibold transition text-slate-600 hover:text-clinicDarkText";
+                }
+            });
+
+            // Sync Mobile Overlay Dynamic Text Classes
+            document.querySelectorAll('#spa-nav-mobile a').forEach(navLink => {
+                if (navLink.getAttribute('href') === hash) {
+                    navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-clinicDarkText bg-slate-100";
+                } else {
+                    navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-slate-700 hover:bg-slate-50";
                 }
             });
         }
