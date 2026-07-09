@@ -179,7 +179,7 @@
             </a>
             
             <!-- CENTRAL NAVIGATION CONTAINER CONTAINER BLOCK -->
-            <nav id="spa-nav" class="hidden md:flex items-center bg-bgIvory border border-secondarySage/20 rounded-full px-2 py-1.5 shadow-sm">
+            <nav id="spa-nav" class="hidden md:flex items-center bg-bgIvory border border-secondarySage rounded-full px-2 py-1.5 shadow-sm">
                 <a href="#/" class="px-4 py-1.5 rounded-full text-sm font-bold transition">Home</a>
                 <a href="#/services" class="px-4 py-1.5 rounded-full text-sm font-bold transition">Services</a>
                 <a href="#/for-gps" class="px-4 py-1.5 rounded-full text-sm font-bold transition">For GPs</a>
@@ -189,7 +189,7 @@
             
             <div class="flex items-center space-x-4">
                 <!-- PRIMARY BUTTON FORMAT: DEEP TEAL WITH WHITE TEXT & LARGE ROUNDED CORNERS -->
-                <a href="#/contact" class="hidden sm:inline-block bg-primaryTeal text-white text-xs md:text-sm px-6 py-3 rounded-full font-bold hover:bg-primaryTeal/90 transition shadow-sm whitespace-nowrap">
+                <a href="#/contact" class="hidden sm:inline-block bg-secondarySage text-white text-xs md:text-sm px-6 py-3 rounded-full font-bold hover:bg-primaryTeal/90 transition shadow-sm whitespace-nowrap">
                     Make Enquiry
                 </a>
                 <button onclick="toggleMobileMenu()" class="md:hidden block text-primaryTeal focus:outline-none p-2 bg-bgIvory rounded-lg border border-secondarySage/20" aria-label="Toggle Menu">
@@ -226,83 +226,93 @@
             {
                 name: "Dr Elayne Ooi",
                 title: "Urology Specialty",
-                degrees: "Consultant Urologist & Surgeon",
+                degrees: "Consultant Urologist & Robotic Surgeon · Founder — MBBS, FRACS",
                 image: "./assets/images/Elayne.png", 
-                description: "Elayne is a Urologist with a special interest in overactive bladder, voiding dysfunction, recurrent urinary tract infections, prostate enlargement, and prostate cancer. She provides specialist assessment of structural and functional contributors to urinary symptoms, supporting accurate diagnosis and targeted management.",
-                specialties: ["Urinary incontinence", "Bladder dysfunction", "Benign prostatic enlargement","Recurrent urinary tract infections","Minimally invasive robotic and endoscopic surgery","Integrated medical and surgical management"]
+                description: "Elayne is a urologist and robotic surgeon, and the founder of the clinic. She helps identify underlying structural and functional causes of urinary symptoms, particularly when they are ongoing or not improving as expected. She supports decisions around further investigation and treatment, including medical and surgical options, so care is clear, personalised and appropriately directed.",
+                specialties: ["Overactive bladder", "Voiding dysfunction", "Prostate enlargement", "Urinary tract infection", "Minimally invasive robotic & endoscopic surgery", "Kidney stones", "Prostate and bladder cancer"]
             },
+            {
+                name: "Dr Andrea Atkinson",
+                title: "Gynaecology — Urogynaecology",
+                degrees: "Consultant Gynaecologist — Urogynaecology — MBBS (Hons), FRANZCOG, DTMH",
+                image: "./assets/images/Andrea.png", 
+                description: "Andrea is a gynaecologist who specialises in urogynaecology: bladder and continence problems linked to pelvic organ support, the pelvic floor and hormonal change. She helps assess when gynaecological factors may be contributing to ongoing urinary or pelvic symptoms.",
+                specialties: ["Urinary incontinence", "Pelvic organ prolapse", "Menopause-related changes", "Pelvic floor function & support", "Ongoing urinary or pelvic symptoms", "Mesh-related issues"]
+            },
+
             {
                 name: "Dr Eric Chu",
-                title: "Infectious Diseases Specialty",
-                degrees: "MBBS, FRACP",
+                title: "Infectious Diseases Physician & Clinical Microbiologist",
+                degrees: "MBBS, FRCPA, FRACP",
                 image: "./assets/images/Eric_Chu.jpg", 
-                description: "Our infectious disease specialist assesses and manages complex or resistant infections that contribute to recurrent or persistent UTIs. With expertise in antimicrobial stewardship and advanced therapies, he ensures treatment is safe, effective and tailored to each patient.",
-                specialties: ["Chronic or recurrent UTIs", "Multi-drug resistant organisms", "Complicated infections (immune suppression)", "Preventative strategies and evidence-based therapies"]
+                description: "Eric is an infectious diseases physician and clinical microbiologist. He supports the care of UTIs that keep coming back or are more complex. He helps review the diagnosis, guide treatment choices, and ensure antibiotics are used safely and effectively. He also works on longer-term strategies based on latest evidence to reduce repeat infections.",
+                specialties: ["Recurrent & resistant UTI", "Careful antibiotic use", "Complex & multi-system infection", "Long-term infection management"]
             },
             {
-                name: "Cleofe Tejano Madryga",
-                title: "Nurse",
-                degrees: "NP",
-                image: "./assets/images/Cleofe_Tejano.png", 
-                description: "Cleofe is an AHPRA-endorsed Nurse Practitioner with over 20 years' experience in renal nursing and chronic disease management. She provides independent assessment, diagnosis, prescribing, and care coordination, with a strong focus on recurrent and complex UTIs, particularly in patients with multiple comorbidities.",
-                specialties: ["Recurrent and complex UTIs", "Nutrition, gut and metabolic function", "Chronic kidney disease and co-morbid conditions", "Care coordination and patient education"]
+                name: "Dr Laura Prates Vitoria",
+                title: "Pain Medicine Physician & Anaesthetist",
+                degrees: "FANZCA, FFPMANZCA",
+                image: "./assets/images/LauraPV.png", 
+                description: "Laura is a pain medicine physician and anaesthetist who helps manage ongoing and persistent pain, including pelvic and bladder-related pain. She supports both medical and procedural treatment options, and helps bring together care when symptoms have been difficult to manage or spread across different providers.",
+                specialties: ["Chronic & persistent pain", "Pelvic & bladder pain", "Procedural pain treatment", "Coordinated, multi-disciplinary care"]
             },
             {
-                name: "Sharon Stephen",
-                title: "Nurse",
-                degrees: "NP",
-                image: "./assets/images/SharonS.png", 
-                description: "Sharon is an AHPRA-endorsed Nurse Practitioner with over 20 years' experience in urology, continence care, and sexual health. She provides independent assessment, diagnosis, prescribing, and care coordination, with a strong focus on complex urological conditions across hospital, community, and primary care settings.",
-                specialties: ["Gynaecological contributors to urinary incontinence", "Pelvic organ prolapse and hormonal changes", "Genitourinary syndrome of menopause", "Female reproductive health conditions and infections", "Tropical diseases, ethical medicine, and global humanitarian aid"]
+                name: "Dr Ravi Agrawal",
+                title: "Pain Medicine Physician",
+                degrees: "MBBS, FCAI, Dip Pain Management, Interventional Pain Fellowship",
+                image: "./assets/images/Ravi.png",
+                description: "Ravi is a pain medicine physician who helps manage ongoing and persistent pain, including pelvic and bladder-related pain. He takes a broad approach, looking at how physical symptoms, the nervous system, and overall well-being work together, and offers minimally invasive procedures where they may help.",
+                specialties: ["Chronic & persistent pain", "Pelvic & bladder pain", "Minimally invasive pain procedures", "Whole-person approach"]
             },
             {
-                name: "Esther Ho",
-                title: "Pharmacist",
-                degrees: "Bachelor of Pharmacy",
-                image: "./assets/images/Esther.png", 
-                description: "Esther Ho is a clinical pharmacist with expertise in antimicrobial optimisation and medication safety. She supports the clinic's UTI pathway by ensuring treatments are evidence-based, appropriate, and tailored to each patient's needs. ",
-                specialties: ["Antibiotic optimisation and stewardship", "Resistance risk reduction", "Drug interactions and medication safety", "Non-antibiotic prevention strategies", "Patient counselling and education"]
-            },
-            {
-                name: "Jarrod Lim",
-                title: "Admin",
-                degrees: "Clinical Triage Specialist",
-                image: "./assets/images/Jarrod.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
-            },
-            {
-                name: "Bernardine Seow",
-                title: "Admin",
-                degrees: "Operational Care Director",
-                image: "./assets/images/Bernardine.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
-            },
-            {
-                name: "Andrea Atkinson",
-                title: "UroGynae",
-                degrees: "Consultant Pelvic Floor Surgeon",
-                image: "./assets/images/Andrea.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
-            },
-            {
-                name: "Jen Bardsley",
-                title: "Nurse",
-                degrees: "Clinical Operations Nurse",
-                image: "./assets/images/JenB.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
+                name: "Dr Jennifer Pontré",
+                title: "Consultant Gynaecologist",
+                degrees: "MBBS (Hons), FRANZCOG, AGES Accredited Laparoscopic Surgeon, Churchill Fellow",
+                image: "./assets/images/JenniferP.png",
+                description: "Jennifer is a gynaecologist and advanced laparoscopic surgeon with a particular interest in endometriosis, pelvic pain and heavy periods. She has trained internationally in complex endometriosis surgery and takes a broad, team-based view of pelvic pain, alongside her work in fertility and menopause care.",
+                specialties: ["Endometriosis", "Complex laparoscopic surgery", "Chronic pelvic pain", "Heavy menstrual bleeding", "Fertility & menopause care"]
             },
             {
                 name: "Elisabeth Borman",
                 title: "Pelvic Floor Physiotherapist",
-                degrees: "Allied Health Physical Rehabilitation Specialist",
-                image: "./assets/images/ElisabethBorman.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
+                degrees: "- BPhysio, GradCert (Continence & Women's Health)",
+                image: "./assets/images/ElisabethBorman.png",
+                description: "Elisabeth is a pelvic health physiotherapist who helps assess and improve how the pelvic floor muscles are working. She supports symptoms such as leakage, urgency, difficulty emptying, prolapse and pelvic pain, using a range of treatments including exercises, hands-on therapy, and other supportive techniques to improve day-to-day function. She works with both women and men, including recovery after childbirth or surgery.",
+                specialties: ["Pelvic floor assessment & retraining", "Bladder & bowel control", "Prolapse & pelvic pain", "Men's pelvic health", "Recovery after childbirth or surgery", "Acupuncture & nerve stimulation"]
             },
+            {
+                name: "Rachel Oldfield",
+                title: "Registered Psychologist",
+                degrees: "MPsych, BSocSci, BA",
+                image: "./assets/images/Rachel.png",
+                description: "Rachel supports your wellbeing while you’re dealing with a physical health condition. She understands that ongoing symptoms can affect more than just the body — including stress, anxiety, relationships, and confidence — and helps you manage these challenges in a way that feels practical and supportive. She has a particular interest in more complex situations where symptoms don’t follow a clear or straightforward path.",
+                specialties: ["Anxiety, stress & overwhelm", "Adjusting to diagnosis or treatment", "Living with ongoing symptoms", "Identity, adjustment & confidence", "Relationship & family strain", "Preparing for procedures", "Mindfulness & self-care"]
+            },
+            {
+                name: "Esther Ho",
+                title: "Pharmacist",
+                degrees: "BPharm",
+                image: "./assets/images/Esther.png",
+                description: "Esther is a pharmacist with a background in compounding. She helps identify treatments that are safe, effective, and based on the latest evidence. She can also provide advice on dosing and help find the right options if standard products aren’t suitable. needed, medications and supplements can be arranged and sent directly to you, with the option of a phone call to talk through how to use them and answer any questions.",
+                specialties: ["Medication review & safety", "Compounded & tailored preparations", "Medications & supplements posted to patients", "Phone consultations"]
+            },
+            {
+                name: "Cleofe Madryga",
+                title: "Nurse Practitioner",
+                degrees: "MN (NP), MSc, BN",
+                image: "./assets/images/Cleofe_Tejano.png",
+                description: "Cleo is a nurse practitioner with a focus on UTIs, including recurrent and more complex cases. She takes a broad approach to care, combining standard medical treatment with integrative, evidence-based options. She has a particular interest in gut health, nutrition, and overall wellbeing, and how these can influence urinary symptoms.",
+                specialties: ["Recurrent & complex UTI", "Integrative medicine", "Nutrition & metabolism", "Gut health & microbiome", "Health & wellbeing"]
+            },
+            {
+                name: "Sharon Stephen",
+                title: "Nurse Practitioner ",
+                degrees: "MN (NP), Dip Management, PGDip (Urology & Continence), DipHE (Nursing)",
+                image: "./assets/images/SharonS.png",
+                description: "Sharon is a nurse practitioner who supports bladder care and works closely across both urology and gynaecology. She helps manage incontinence and day-to-day bladder symptoms, and provides practical treatments focused on improving comfort and function. Her approach is to get simple, conservative treatments right before considering anything more involved.",
+                specialties: ["Incontinence & bladder care", "Pessary fitting", "Topical oestrogen therapy", "Bladder instillations", "Catheter management"]
+            },
+
             {
                 name: "Ravi Agrawal",
                 title: "Pain specialist",
@@ -312,50 +322,26 @@
                 specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
             },
             {
-                name: "Sarah",
-                title: "Specialist Nurse",
-                degrees: "Intake Triage Team Lead",
-                image: "./assets/images/Sarah.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
+                name: "Jen Bardsley",
+                title: "Nurse Practitioner",
+                degrees: "MN (NP), MSustStud, BN",
+                image: "./assets/images/JenB.png",
+                description: "Jen is a nurse practitioner with a background in urology, including bladder symptoms, prostate conditions, and neurogenic bladder care. She often leads the first assessment, helping to understand your symptoms and outline the next steps. She supports ongoing care, with experience in public health and working closely with the wider team.",
+                specialties: ["Initial assessment", "Benign prostatic enlargement", "Prostate cancer care", "Spinal & neurogenic bladder", "Long-term patient support"]
             },
             {
-                name: "Rachel Oldfield",
-                title: "Psychologist",
-                degrees: "Somatic Syndrome Analytics Provider",
-                image: "./assets/images/Rachel.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
-            },
-            {
-                name: "Jennifer Pontre",
-                title: "Gynaecologist",
-                degrees: "Consultant Reproductive Specialist",
-                image: "./assets/images/JenniferP.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
-            },
-            {
-                name: "Laura Prates-Vitoria",
-                title: "Pain specialist",
-                degrees: "Consultant Somatic Syndrome Analytics",
-                image: "./assets/images/LauraPV.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
-            },
-            {
-                name: "Sharon Stephen",
-                title: "NP",
-                degrees: "Advanced Care Nurse Practitioner",
-                image: "./assets/images/SharonS.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
+                name: "Sarah McQueen",
+                title: "Pain Nurse",
+                degrees: "BN",
+                image: "./assets/images/Sarah.png",
+                description: "Sarah is a pain nurse with extensive experience supporting people with both acute and ongoing pain. She helps manage day-to-day symptoms, explains treatments, and provides ongoing support between appointments, so you feel informed and supported throughout your care.",
+                specialties: ["Chronic & acute pain", "Pelvic pain support", "Tracking treatment progress", "Ongoing support"]
             },
             {
                 name: "Eli",
                 title: "Director of Paw-tient Relations",
                 degrees: "PHD (Puppy having treats diligently)",
-                image: "./assets/images/Eli.png", 
+                image: "./assets/images/Eli.png",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                 specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
             }
@@ -364,20 +350,20 @@
         const routes = {
             '#/': `
                 <section class="py-12 sm:py-24 px-4 sm:px-6 md:px-12 text-center max-w-5xl mx-auto space-y-6 sm:space-y-8">
-                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-clinicDark leading-none font-dmSerif">
-                        The UTI,<br class="sm:hidden"> Bladder & Pelvic Clinic
+                    <h1 class="text-xl sm:text-5xl font-black tracking-tight text-clinicDark leading-none font-dmSerif">
+                        The UTI,<br class="sm:hidden"> Bladder, Prostate & Pelvic Clinic
                     </h1>
-                    <h3 class="text-lg sm:text-2xl font-semibold text-accentTerracotta max-w-3xl mx-auto leading-snug font-cormorant">
+                    <h1 class="text-lg sm:text-3xl font-semibold text-accentTerracotta max-w-3xl mx-auto leading-snug font-cormorant">
                         Integrated specialist care for complex bladder, prostate and pelvic conditions
-                    </h3>
+                    </h1>
                     <p class="text-sm sm:text-lg text-clinicDark/90 max-w-3xl mx-auto leading-relaxed">
                         These symptoms are rarely confined to one system. We bring urology, gynaecology and pelvic health specialists together in a single, coordinated clinic—so your care is clear, connected, and designed around you.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-                        <a href="#/contact" class="w-full sm:w-auto bg-primaryTeal text-white px-8 py-4 rounded-full font-bold text-sm hover:opacity-90 transition shadow-md text-center">
+                        <a href="#/contact" class="w-full sm:w-auto bg-secondarySage text-white px-8 py-4 rounded-full font-bold text-sm hover:opacity-90 transition shadow-md text-center">
                             Request an Appointment
                         </a>
-                        <a href="#/for-gps" class="w-full sm:w-auto bg-white text-primaryTeal border-2 border-primaryTeal px-8 py-4 rounded-full font-bold text-sm hover:bg-bgIvory transition shadow-sm text-center">
+                        <a href="#/for-gps" class="w-full sm:w-auto bg-white text-primaryTeal border-2 border-secondarySage px-8 py-4 rounded-full font-bold text-sm hover:bg-bgIvory transition shadow-sm text-center">
                             For GPs
                         </a>
                     </div>
@@ -385,7 +371,7 @@
 
                 <section class="py-12 sm:py-16 px-4 bg-white border-y border-secondarySage/20">
                     <div class="max-w-4xl mx-auto space-y-6">
-                        <span class="text-xs font-bold uppercase tracking-wider text-secondarySage block text-center">About the Clinic</span>
+                        <span class="text-xl font-bold uppercase tracking-wider text-secondarySage block text-center">About the Clinic</span>
                         <h3 class="text-2xl sm:text-3xl font-semibold text-clinicDark text-center font-cormorant">A coordinated model of care</h3>
                         <div class="text-sm sm:text-base text-clinicDark/90 space-y-4 leading-relaxed pt-2">
                             <p>Bladder, prostate and pelvic conditions are often persistent because the underlying cause spans multiple systems.</p>
@@ -397,7 +383,7 @@
 
                 <section class="py-12 sm:py-16 px-4 max-w-5xl mx-auto space-y-10">
                     <div class="text-center space-y-2">
-                        <span class="text-xs font-bold uppercase tracking-wider text-secondarySage">Core Distinctions</span>
+                        <span class="text-xl font-bold uppercase tracking-wider text-secondarySage">Core Distinctions</span>
                         <h3 class="text-2xl sm:text-3xl font-semibold text-clinicDark font-cormorant">Clinical architecture, designed around the patient</h3>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
@@ -423,7 +409,7 @@
                 <section class="py-12 sm:py-16 px-4 bg-white border-t border-secondarySage/20">
                     <div class="max-w-4xl mx-auto space-y-10">
                         <div class="text-center space-y-2">
-                            <span class="text-xs font-bold uppercase tracking-wider text-secondarySage">Patient Journey</span>
+                            <span class="text-xl font-bold uppercase tracking-wider text-secondarySage">Patient Journey</span>
                             <h3 class="text-2xl sm:text-3xl font-semibold text-clinicDark font-cormorant">A structured and guided pathway</h3>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
@@ -504,7 +490,7 @@
                         </div>
                     </div>
                     <div class="text-center pt-4">
-                        <a href="#/contact" class="inline-block bg-primaryTeal text-white px-8 py-4 rounded-full font-bold text-sm hover:opacity-90 transition shadow-sm">
+                        <a href="#/contact" class="inline-block bg-secondarySage text-white px-8 py-4 rounded-full font-bold text-sm hover:opacity-90 transition shadow-sm">
                             Request an Appointment
                         </a>
                     </div>
@@ -518,7 +504,7 @@
                         <p class="text-lg text-accentTerracotta font-bold font-cormorant">Integrated Pelvic & Urological Care</p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         <div class="bg-white p-6 sm:p-8 rounded-2xl border border-secondarySage/20 shadow-sm space-y-4">
                             <h3 class="text-xl font-bold text-clinicDark border-b border-slate-100 pb-2 font-cormorant">Patient Access</h3>
                             <p class="text-sm text-clinicDark/90 leading-relaxed">
@@ -529,7 +515,7 @@
                                 <li>• Pelvic Health Physiotherapy</li>
                                 <li>• Clinical Psychology Care</li>
                             </ul>
-                            <a href="#/contact" class="inline-block bg-primaryTeal text-white px-6 py-3 rounded-full text-xs font-bold hover:opacity-90 transition shadow-sm">
+                            <a href="#/contact" class="inline-block bg-secondarySage text-white px-6 py-3 rounded-full text-xs font-bold hover:opacity-90 transition shadow-sm">
                                 Request Patient Appointment
                             </a>
                         </div>
@@ -544,7 +530,7 @@
                                 <div><strong class="text-clinicDark">Secure Fax Line:</strong> <span class="text-clinicDark">08 6555 6578</span></div>
                                 <div><strong class="text-clinicDark">Clinical Email:</strong> <span class="text-clinicDark">emailus@thsc.au</span></div>
                             </div>
-                            <a href="#" class="inline-block bg-white text-primaryTeal border-2 border-primaryTeal px-6 py-2.5 rounded-full text-xs font-bold hover:bg-bgIvory transition shadow-sm">
+                            <a href="#" class="inline-block bg-white text-primaryTeal border-2 border-secondarySage px-6 py-2.5 rounded-full text-xs font-bold hover:bg-bgIvory transition shadow-sm">
                                 Download Referral Templates
                             </a>
                         </div>
@@ -766,7 +752,7 @@
                                     <textarea id="form-message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:border-primaryTeal text-clinicDark bg-bgIvory transition" placeholder="Please outline details..."></textarea>
                                 </div>
                                 
-                                <button type="submit" id="form-submit-btn" class="w-full bg-primaryTeal text-white py-3 rounded-full font-bold hover:bg-opacity-90 transition shadow-sm">Send Message Request</button>
+                                <button type="submit" id="form-submit-btn" class="w-full bg-secondarySage text-white py-3 rounded-full font-bold hover:bg-opacity-90 transition shadow-sm">Send Message Request</button>
                             </form>
                         </div>
                     </div>
@@ -818,16 +804,16 @@
             // SYNCHRONIZED HIGH-CONTRAST DYNAMIC NAV LINKS CLASS INJECTION
             document.querySelectorAll('#spa-nav a').forEach(navLink => {
                 if (navLink.getAttribute('href') === hash) {
-                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-white bg-primaryTeal shadow-sm";
+                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-white bg-secondarySage shadow-sm";
                 } else {
-                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-clinicDark hover:text-primaryTeal";
+                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-clinicDark hover:text-secondarySage";
                 }
             });
 
             // MOBILE SYNCHRONIZED NAV LINK RENDERING LOOP
             document.querySelectorAll('#spa-nav-mobile a').forEach(navLink => {
                 if (navLink.getAttribute('href') === hash) {
-                    navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-white bg-primaryTeal shadow-sm text-center block";
+                    navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-white bg-secondarySage shadow-sm text-center block";
                 } else {
                     navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-clinicDark hover:bg-secondarySage/10 text-center block";
                 }
