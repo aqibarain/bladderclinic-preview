@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="color-scheme" content="light">
+    
     <title>The Health Specialists Collective | UTI, Bladder & Pelvic Clinic</title>
     <meta name="description" content="Integrated specialist care for complex bladder, prostate and pelvic conditions in Perth. Located at 249 Scarborough Beach Rd, Mount Hawthorn.">
     <meta name="keywords" content="uti clinic perth, bladder clinic perth, pelvic health collective, prostate specialist mount hawthorn, urology collective perth">
     
-    <!-- PREMIUM TYPOGRAPHY REGISTRATION SYSTEM -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -157,6 +159,14 @@
     <style>
         .fade-in { animation: fadeIn 0.3s ease-in-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        
+        :root { color-scheme: light !important; }
+        @media (prefers-color-scheme: dark) {
+            body, main, section, header, footer, div, p, h1, h2, h3, h4, a, form, input, label {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
     </style>
 </head>
 <body class="bg-bgIvory text-clinicDark font-inter antialiased flex flex-col min-h-screen">
@@ -168,7 +178,6 @@
         <span>Enquiry sent successfully. We will call you shortly.</span>
     </div>
 
-    <!-- WHITE HEADER FRAME -->
     <header class="w-full bg-white h-[115px] text-clinicDark sticky top-0 z-50 border-b border-secondarySage/20 shadow-sm flex items-center px-4 md:px-12">
         <div class="w-full max-w-7xl mx-auto flex items-center justify-between">
             
@@ -178,17 +187,30 @@
                 </div>
             </a>
             
-            <!-- CENTRAL NAVIGATION CONTAINER CONTAINER BLOCK -->
-            <nav id="spa-nav" class="hidden md:flex items-center bg-bgIvory border border-secondarySage rounded-full px-2 py-1.5 shadow-sm">
+            <nav id="spa-nav" class="hidden md:flex items-center bg-bgIvory border border-secondarySage rounded-full px-2 py-1.5 shadow-sm relative">
                 <a href="#/" class="px-4 py-1.5 rounded-full text-sm font-bold transition">Home</a>
                 <a href="#/services" class="px-4 py-1.5 rounded-full text-sm font-bold transition">Services</a>
+                
+                <div class="relative group inline-block">
+                    <button class="px-4 py-1.5 rounded-full text-sm font-bold transition flex items-center space-x-1 text-clinicDark hover:text-secondarySage focus:outline-none">
+                        <span>Conditions</span>
+                        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path></svg>
+                    </button>
+                    <div class="absolute left-0 w-56 pt-2 origin-top-left opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                        <div class="bg-white border border-secondarySage/20 rounded-2xl shadow-xl overflow-hidden py-1 flex flex-col">
+                            <a href="#/conditions/bladder-clinic" class="px-4 py-2.5 text-xs font-bold text-clinicDark hover:bg-bgIvory hover:text-primaryTeal transition">Bladder Clinic</a>
+                            <a href="#/conditions/prostate-clinic" class="px-4 py-2.5 text-xs font-bold text-clinicDark hover:bg-bgIvory hover:text-primaryTeal transition">Prostate Clinic</a>
+                            <a href="#/conditions/pelvic-clinic" class="px-4 py-2.5 text-xs font-bold text-clinicDark hover:bg-bgIvory hover:text-primaryTeal transition">Pelvic Clinic</a>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="#/for-gps" class="px-4 py-1.5 rounded-full text-sm font-bold transition">For GPs</a>
                 <a href="#/doctors" class="px-4 py-1.5 rounded-full text-sm font-bold transition">Our Team</a>
                 <a href="#/contact" class="px-4 py-1.5 rounded-full text-sm font-bold transition">Contact</a>
             </nav>
             
             <div class="flex items-center space-x-4">
-                <!-- PRIMARY BUTTON FORMAT: DEEP TEAL WITH WHITE TEXT & LARGE ROUNDED CORNERS -->
                 <a href="#/contact" class="hidden sm:inline-block bg-secondarySage text-white text-xs md:text-sm px-6 py-3 rounded-full font-bold hover:bg-primaryTeal/90 transition shadow-sm whitespace-nowrap">
                     Make Enquiry
                 </a>
@@ -201,14 +223,20 @@
 
         </div>
 
-        <!-- MOBILE FLYOUT SYSTEM (COLOR MATCHED EXACTLY WITH DESKTOP VIEW) -->
         <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white border border-secondarySage/30 shadow-xl absolute left-4 right-4 top-24 fade-in z-50 rounded-3xl p-4">
-            <nav id="spa-nav-mobile" class="flex flex-col space-y-2">
-                <a href="#/" onclick="closeMobileMenu()" class="px-4 py-3 rounded-full text-sm font-bold transition text-center">Home</a>
-                <a href="#/services" onclick="closeMobileMenu()" class="px-4 py-3 rounded-full text-sm font-bold transition text-center">Services</a>
-                <a href="#/for-gps" onclick="closeMobileMenu()" class="px-4 py-3 rounded-full text-sm font-bold transition text-center">For GPs</a>
-                <a href="#/doctors" onclick="closeMobileMenu()" class="px-4 py-3 rounded-full text-sm font-bold transition text-center">Our Team</a>
-                <a href="#/contact" onclick="closeMobileMenu()" class="px-4 py-3 rounded-full text-sm font-bold transition text-center">Contact</a>
+            <nav id="spa-nav-mobile" class="flex flex-col space-y-1.5">
+                <a href="#/" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-bold transition text-center block">Home</a>
+                <a href="#/services" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-bold transition text-center block">Services</a>
+                
+                <div class="text-[10px] font-black uppercase text-secondarySage tracking-widest text-center pt-2 pb-1 border-t border-slate-100 mt-1">Our Clinics</div>
+                <a href="#/conditions/bladder-clinic" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-bold transition text-center block bg-bgIvory/40">Bladder Clinic</a>
+                <a href="#/conditions/prostate-clinic" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-bold transition text-center block bg-bgIvory/40">Prostate Clinic</a>
+                <a href="#/conditions/pelvic-clinic" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-bold transition text-center block bg-bgIvory/40">Pelvic Clinic</a>
+                
+                <div class="border-t border-slate-100 my-1"></div>
+                <a href="#/for-gps" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-bold transition text-center block">For GPs</a>
+                <a href="#/doctors" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-bold transition text-center block">Our Team</a>
+                <a href="#/contact" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-bold transition text-center block">Contact</a>
             </nav>
         </div>
     </header>
@@ -239,7 +267,6 @@
                 description: "Andrea is a gynaecologist who specialises in urogynaecology: bladder and continence problems linked to pelvic organ support, the pelvic floor and hormonal change. She helps assess when gynaecological factors may be contributing to ongoing urinary or pelvic symptoms.",
                 specialties: ["Urinary incontinence", "Pelvic organ prolapse", "Menopause-related changes", "Pelvic floor function & support", "Ongoing urinary or pelvic symptoms", "Mesh-related issues"]
             },
-
             {
                 name: "Dr Eric Chu",
                 title: "Infectious Diseases Physician & Clinical Microbiologist",
@@ -312,15 +339,6 @@
                 description: "Sharon is a nurse practitioner who supports bladder care and works closely across both urology and gynaecology. She helps manage incontinence and day-to-day bladder symptoms, and provides practical treatments focused on improving comfort and function. Her approach is to get simple, conservative treatments right before considering anything more involved.",
                 specialties: ["Incontinence & bladder care", "Pessary fitting", "Topical oestrogen therapy", "Bladder instillations", "Catheter management"]
             },
-
-            {
-                name: "Ravi Agrawal",
-                title: "Pain specialist",
-                degrees: "Consultant Medical Director",
-                image: "./assets/images/Ravi.png", 
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                specialties: ["Chronic pelvic and bladder pain", "Central sensitisation", "Persistent pain syndromes", "Multi-disciplinary pain management"]
-            },
             {
                 name: "Jen Bardsley",
                 title: "Nurse Practitioner",
@@ -350,12 +368,12 @@
         const routes = {
             '#/': `
                 <section class="py-12 sm:py-24 px-4 sm:px-6 md:px-12 text-center max-w-5xl mx-auto space-y-6 sm:space-y-8">
-                    <h1 class="text-xl sm:text-5xl font-black tracking-tight text-clinicDark leading-none font-dmSerif">
-                        The UTI,<br class="sm:hidden"> Bladder, Prostate & Pelvic Clinic
+                    <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-clinicDark leading-none font-dmSerif">
+                        The UTI, Bladder, Prostrate & Pelvic Clinic
                     </h1>
-                    <h1 class="text-lg sm:text-3xl font-semibold text-accentTerracotta max-w-3xl mx-auto leading-snug font-cormorant">
+                    <h3 class="text-lg sm:text-3xl font-semibold text-accentTerracotta max-w-3xl mx-auto leading-snug font-cormorant">
                         Integrated specialist care for complex bladder, prostate and pelvic conditions
-                    </h1>
+                    </h3>
                     <p class="text-sm sm:text-lg text-clinicDark/90 max-w-3xl mx-auto leading-relaxed">
                         These symptoms are rarely confined to one system. We bring urology, gynaecology and pelvic health specialists together in a single, coordinated clinic—so your care is clear, connected, and designed around you.
                     </p>
@@ -442,7 +460,6 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                         <div class="bg-white p-6 rounded-2xl border border-secondarySage/20 shadow-sm flex flex-col justify-between">
                             <div>
-                                <div class="text-xs font-bold text-secondarySage uppercase tracking-wider mb-1">01</div>
                                 <h3 class="text-lg font-bold text-clinicDark leading-tight font-headingCormorant text-xl">Urinary Tract Infections</h3>
                                 <p class="text-xs font-bold text-accentTerracotta mt-0.5">Precision Care for Recurrent & Resistant Infection</p>
                                 <p class="text-sm text-clinicDark/80 mt-3 leading-relaxed">→ Advanced diagnostics and targeted therapies to break the cycle of chronic bladder infection.</p>
@@ -450,7 +467,6 @@
                         </div>
                         <div class="bg-white p-6 rounded-2xl border border-secondarySage/20 shadow-sm flex flex-col justify-between">
                             <div>
-                                <div class="text-xs font-bold text-secondarySage uppercase tracking-wider mb-1">02</div>
                                 <h3 class="text-lg font-bold text-clinicDark leading-tight font-headingCormorant text-xl">Overactive Bladder</h3>
                                 <p class="text-xs font-bold text-accentTerracotta mt-0.5">Restoring Control to Frequency, Urgency & Nighttime Disruption</p>
                                 <p class="text-sm text-clinicDark/80 mt-3 leading-relaxed">→ Structured pathways to manage frequency, nocturia, and bladder overactivity with precision.</p>
@@ -458,7 +474,6 @@
                         </div>
                         <div class="bg-white p-6 rounded-2xl border border-secondarySage/20 shadow-sm flex flex-col justify-between">
                             <div>
-                                <div class="text-xs font-bold text-secondarySage uppercase tracking-wider mb-1">03</div>
                                 <h3 class="text-lg font-bold text-clinicDark leading-tight font-headingCormorant text-xl">Incontinence Management</h3>
                                 <p class="text-xs font-bold text-accentTerracotta mt-0.5">Discreet Solutions for Bladder & Bowel Control</p>
                                 <p class="text-sm text-clinicDark/80 mt-3 leading-relaxed">→ Individualised programs addressing stress, urge, and complex leakage patterns.</p>
@@ -466,7 +481,6 @@
                         </div>
                         <div class="bg-white p-6 rounded-2xl border border-secondarySage/20 shadow-sm flex flex-col justify-between">
                             <div>
-                                <div class="text-xs font-bold text-secondarySage uppercase tracking-wider mb-1">04</div>
                                 <h3 class="text-lg font-bold text-clinicDark leading-tight font-headingCormorant text-xl">Prostate Conditions</h3>
                                 <p class="text-xs font-bold text-accentTerracotta mt-0.5">Optimising Flow & Lower Urinary Function</p>
                                 <p class="text-sm text-clinicDark/80 mt-3 leading-relaxed">→ Comprehensive evaluation and management of benign enlargement and obstruction.</p>
@@ -474,7 +488,6 @@
                         </div>
                         <div class="bg-white p-6 rounded-2xl border border-secondarySage/20 shadow-sm flex flex-col justify-between">
                             <div>
-                                <div class="text-xs font-bold text-secondarySage uppercase tracking-wider mb-1">05</div>
                                 <h3 class="text-lg font-bold text-clinicDark leading-tight font-headingCormorant text-xl">Pelvic Organ Prolapse</h3>
                                 <p class="text-xs font-bold text-accentTerracotta mt-0.5">Support, Restoration & Structural Care</p>
                                 <p class="text-sm text-clinicDark/80 mt-3 leading-relaxed">→ Coordinated approaches to relieve pressure, restore support, and improve function.</p>
@@ -482,9 +495,7 @@
                         </div>
                         <div class="bg-white p-6 rounded-2xl border border-secondarySage/20 shadow-sm flex flex-col justify-between">
                             <div>
-                                <div class="text-xs font-bold text-secondarySage uppercase tracking-wider mb-1">06</div>
                                 <h3 class="text-lg font-bold text-clinicDark leading-tight font-headingCormorant text-xl">Pelvic Pain</h3>
-                                <p class="text-xs font-bold text-accentTerracotta mt-0.5">Integrated Care for Complex Pelvic Conditions</p>
                                 <p class="text-sm text-clinicDark/80 mt-3 leading-relaxed">→ Multidisciplinary treatment for chronic pain involving muscles, nerves, and pelvic organs.</p>
                             </div>
                         </div>
@@ -504,7 +515,7 @@
                         <p class="text-lg text-accentTerracotta font-bold font-cormorant">Integrated Pelvic & Urological Care</p>
                     </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         <div class="bg-white p-6 sm:p-8 rounded-2xl border border-secondarySage/20 shadow-sm space-y-4">
                             <h3 class="text-xl font-bold text-clinicDark border-b border-slate-100 pb-2 font-cormorant">Patient Access</h3>
                             <p class="text-sm text-clinicDark/90 leading-relaxed">
@@ -644,10 +655,161 @@
                         </div>
 
                         <hr class="border-secondarySage/10">
-
-
                     </div>
                 </section>
+            `,
+            '#/conditions/bladder-clinic': `
+                <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 space-y-12">
+                    <div class="text-center space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-white bg-secondarySage px-4 py-1.5 rounded-full shadow-sm">Clinical Division</span>
+                        <h2 class="text-3xl sm:text-5xl font-black text-primaryTeal font-dmSerif">Bladder Clinic</h2>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-10 rounded-3xl border border-secondarySage/20 shadow-sm space-y-6">
+                        <h3 class="text-2xl font-bold text-clinicDark font-cormorant border-b border-slate-100 pb-3">Urinary Tract Infections</h3>
+                        <p class="text-sm text-clinicDark/90 leading-relaxed font-medium">Persistent or recurrent urinary tract infections (UTIs) require more than repeated short courses of antibiotics. At THSC, we take a structured, multidisciplinary approach to identify underlying drivers, treat active infection precisely, and prevent recurrence with tailored long-term strategies.</p>
+                        
+                        <div class="space-y-4 text-xs sm:text-sm text-clinicDark/80 leading-relaxed">
+                            <p><strong class="text-accentTerracotta">Assessment:</strong> We begin with a detailed review of your symptoms, infection history, and risk factors, including prior treatments and recurrence patterns. Structured questionnaires and consultations help define your individual infection profile and guide early management.</p>
+                            <p><strong class="text-accentTerracotta">Investigations & Diagnostics:</strong> Advanced urine cultures (including resistant organisms), bladder emptying functional assessments, and imaging to check for factors such as stones, retention, prolapse, or hormonal shifts. Specialist input may be involved to identify anatomical, microbiological, or inflammatory drivers.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm pt-4 border-t border-slate-100">
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-primaryTeal">Advanced Bladder-Based Therapies</h4>
+                                <ul class="list-disc pl-4 space-y-1 text-clinicDark/80 text-xs">
+                                    <li><strong>Uromune® (Oral Immunotherapy Vaccine):</strong> Enhances biological immune defence against recurrent UTIs.</li>
+                                    <li><strong>Bladder Instillations:</strong> Hyaluronic acid and chondroitin sulfate to repair and protect the bladder lining.</li>
+                                    <li><strong>Intravesical Antibiotics:</strong> Direct targeted delivery loops (e.g., gentamicin) into the bladder for resistant strains.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-clinicDark">Prevention & Long-Term Care</h4>
+                                <p class="text-xs text-clinicDark/80 leading-relaxed">Pathways integrate lifestyle and behavioural strategies, fluid/hydration habit optimization, evidence-based supplements (cranberry, D-mannose, probiotics), selective vaginal oestrogen, and structured low-dose antibiotic prophylaxis where indicated to restore lasting bladder resilience.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-10 rounded-3xl border border-secondarySage/20 shadow-sm space-y-6">
+                        <h3 class="text-2xl font-bold text-clinicDark font-cormorant border-b border-slate-100 pb-3">Overactive Bladder</h3>
+                        <p class="text-sm text-clinicDark/90 leading-relaxed font-medium">Overactive bladder (OAB) can cause urgency, frequent urination, and disrupted sleep. Waking at night to pass urine (nocturia) or increased urine production overnight (nocturnal polyuria) frequently overlaps with OAB conditions. At THSC, we use structured pathways to understand your bladder patterns and restore control through personalised, evidence-based care.</p>
+                        
+                        <div class="space-y-4 text-xs sm:text-sm text-clinicDark/80 leading-relaxed">
+                            <p><strong class="text-accentTerracotta">Assessment & Investigations:</strong> We map fluid mapping, daytime frequency, and nighttime waking habits. This is supported by 24-hour output diaries, pelvic floor functional checks, advanced <strong>Urodynamic studies</strong> to measure bladder pressures, and <strong>Cystoscopy</strong> evaluations of the internal bladder lining.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm pt-4 border-t border-slate-100">
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-primaryTeal">First-Line & Targeted Management</h4>
+                                <ul class="list-disc pl-4 space-y-1 text-clinicDark/80 text-xs">
+                                    <li>Bladder retraining programs, fluid timing, and lifestyle adjustments.</li>
+                                    <li>Pelvic floor muscle physiotherapy & urge suppression techniques.</li>
+                                    <li>Targeted medical therapies optimized for daytime and nighttime symptom reduction.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-accentTerracotta">Advanced Signaling & Neuromodulation</h4>
+                                <p class="text-xs text-clinicDark/80 leading-relaxed">For refractory cases, pathways offer **Botulinum toxin (Botox)** bladder injections, peripheral neuromodulation (PTNS, TTNS, TENS, TEAS), pelvic floor muscle neuromuscular stimulation via the EMS chair, and **Sacral Neuromodulation (SNM)** for complex presentations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            '#/conditions/prostate-clinic': `
+                <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 space-y-12">
+                    <div class="text-center space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-white bg-secondarySage px-4 py-1.5 rounded-full shadow-sm">Clinical Division</span>
+                        <h2 class="text-3xl sm:text-5xl font-black text-primaryTeal font-dmSerif">Prostate Clinic</h2>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-10 rounded-3xl border border-secondarySage/20 shadow-sm space-y-6">
+                        <h3 class="text-2xl font-bold text-clinicDark font-cormorant border-b border-slate-100 pb-3">Prostate Conditions</h3>
+                        <p class="text-sm text-clinicDark/90 leading-relaxed">Prostate conditions can affect urinary flow, bladder function, and overall quality of life. The most common cause is **benign prostatic hyperplasia (BPH)**, but symptoms may also arise from **prostatitis (inflammation of the prostate)** or **prostate cancer**. At THSC, we provide structured, comprehensive assessment to distinguish between these conditions.</p>
+                        
+                        <div class="space-y-4 text-xs sm:text-sm text-clinicDark/80 leading-relaxed">
+                            <p><strong class="text-accentTerracotta">Comprehensive Diagnostics:</strong> Screening blends weak flow, hesitancy, and incomplete emptying evaluation with targeted testing: urine infection tests, **PSA (Prostate-Specific Antigen)** diagnostics, urine flow velocity checks, bladder ultrasounds, multiparametric prostate MRIs, and prostate biopsy evaluations.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs pt-4 border-t border-slate-100">
+                            <div class="space-y-2 bg-bgIvory p-4 rounded-xl border border-secondarySage/10">
+                                <h4 class="font-bold text-primaryTeal text-sm">Benign Hyperplasia (BPH)</h4>
+                                <p class="text-clinicDark/80 leading-relaxed mt-1">First line management includes lifestyle adjustments and herbal therapies (saw palmetto). Medical therapies utilize flow blockers or sizing reduction drugs. Advanced options feature **iTind** implants, **Rezum** vapour, **Urolift** channels, TURP, or robotic **HoLEP laser enucleation**.</p>
+                            </div>
+                            <div class="space-y-2 bg-bgIvory p-4 rounded-xl border border-secondarySage/10">
+                                <h4 class="font-bold text-accentTerracotta text-sm">Prostatitis Glandular Care</h4>
+                                <p class="text-clinicDark/80 leading-relaxed mt-1">Bacterial or chronic pelvic pain discomfort patterns are systematically resolved using targeted antibiotic courses, anti-inflammatory agents, pain-modulating strategies, and specialized pelvic floor muscle physiotherapy.</p>
+                            </div>
+                            <div class="space-y-2 bg-bgIvory p-4 rounded-xl border border-secondarySage/10">
+                                <h4 class="font-bold text-clinicDark text-sm">Prostate Cancer Integration</h4>
+                                <p class="text-clinicDark/80 leading-relaxed mt-1">Low-risk tracking values active surveillance. Confirmed pathways coordinate oncology teams to deliver robotic prostatectomy, radiation, seed brachytherapy, or protective **Barrigel rectal spacers** to mitigate nearby tissue exposure risks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            '#/conditions/pelvic-clinic': `
+                <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 space-y-12">
+                    <div class="text-center space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-white bg-secondarySage px-4 py-1.5 rounded-full shadow-sm">Clinical Division</span>
+                        <h2 class="text-3xl sm:text-5xl font-black text-primaryTeal font-dmSerif">Pelvic Clinic</h2>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-10 rounded-3xl border border-secondarySage/20 shadow-sm space-y-4">
+                        <h3 class="text-2xl font-bold text-clinicDark font-cormorant border-b border-slate-100 pb-2">Incontinence Management</h3>
+                        <p class="text-sm text-clinicDark/90 leading-relaxed font-medium">Incontinence may involve bladder and/or bowel control, presenting as leakage with activity, urgency, or incomplete emptying. At THSC, we use structured tracking tools, specialized <strong>Urodynamic pressure evaluations</strong> (to precisely distinguish stress, urge, mixed, and overflow patterns), and **MRI proctography** to inspect combined dynamics.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs pt-4 border-t border-slate-100">
+                            <div class="space-y-1">
+                                <strong class="text-accentTerracotta block text-sm">First-Line Care</strong>
+                                <p class="text-clinicDark/80">Includes pelvic floor muscle retraining and rehabilitation, biofeedback therapies, dietary stool consistency optimization, and fluid strategies to move beyond symptom containment.</p>
+                            </div>
+                            <div class="space-y-1">
+                                <strong class="text-primaryTeal block text-sm">Advanced Signaling Control</strong>
+                                <p class="text-clinicDark/80">Urge and mixed incontinence patterns are treated with **Botulinum toxin (Botox)** bladder injections, **Sacral Neuromodulation (SNM)**, or peripheral neuromodulation (PTNS, TTNS, TENS).</p>
+                            </div>
+                            <div class="space-y-1">
+                                <strong class="text-clinicDark block text-sm">Surgical Options (Stress)</strong>
+                                <p class="text-clinicDark/80">Female structural tracks offer mesh-based mid-urethral slings, mesh-free autologous fascial slings, or Burch colposuspensions. Male procedures offer male slings or **artificial urinary sphincters (AUS)**.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-10 rounded-3xl border border-secondarySage/20 shadow-sm space-y-4">
+                        <h3 class="text-2xl font-bold text-clinicDark font-cormorant border-b border-slate-100 pb-2">Pelvic Organ Prolapse</h3>
+                        <p class="text-sm text-clinicDark/90 leading-relaxed font-medium">Pelvic organ prolapse occurs when the bladder, uterus, or bowel shifts from its normal position, leading to symptoms such as vaginal bulge, pressure, heaviness, or difficulty emptying. At THSC, we provide a complete stepwise management structure from conservative to reconstructive pathways.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs pt-4 border-t border-slate-100">
+                            <div class="space-y-2">
+                                <strong class="text-accentTerracotta block text-sm">Non-Surgical & Hormonal Tracks</strong>
+                                <p class="text-clinicDark/80">Conservative care integrates dedicated pelvic floor muscle training with individualised **pessary fitting** and ongoing care. This is optimized by **vaginal oestrogen therapy** to improve local tissue quality, reduce irritation, and enhance support mechanisms.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <strong class="text-primaryTeal block text-sm">Surgical Repairs (Urogynaecology)</strong>
+                                <p class="text-clinicDark/80">Definitive reconstructive repairs offer anterior repairs (cystocele), posterior repairs (rectocele), perineal reconstruction, vaginal apical suspensions, or laparoscopic/robotic **sacrocolpopexy** (mesh-supported apical repair). It also includes assessment and management protocols for prior **mesh-related complications**.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-10 rounded-3xl border border-secondarySage/20 shadow-sm space-y-4">
+                        <h3 class="text-2xl font-bold text-clinicDark font-cormorant border-b border-slate-100 pb-2">Pelvic Pain</h3>
+                        <p class="text-sm text-clinicDark/90 leading-relaxed font-medium">Pelvic pain is often complex, involving interactions between muscles, nerves, bladder, bowel, and reproductive organs. At THSC, we take an integrated, multidisciplinary approach—mapping the drivers of pain and addressing them **concurrently**, rather than sequentially. This avoids cycles of repeated testing and fragmented referrals.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs pt-4 border-t border-slate-100">
+                            <div class="space-y-1">
+                                <strong class="text-accentTerracotta block text-sm">Physical & Neuromodulation</strong>
+                                <p class="text-clinicDark/80">Foundation maps link specialist pelvic floor physiotherapy (relaxation, release), myofascial trigger point release, biofeedback, massage therapy, pelvic floor EMS magnetic chairs, and peripheral down-regulation (TENS, TTNS).</p>
+                            </div>
+                            <div class="space-y-1">
+                                <strong class="text-primaryTeal block text-sm">Interventional blocks</strong>
+                                <p class="text-clinicDark/80">Persistent or refractory pain drivers are directly addressed through pain medicine specialist interventions: **stellate ganglion blocks**, **radiofrequency ablation (RFA)**, peripheral nerve blocks, and trigger point injections.</p>
+                            </div>
+                            <div class="space-y-1">
+                                <strong class="text-clinicDark block text-sm">Psychological & Medical Support</strong>
+                                <p class="text-clinicDark/80">Central nervous system sensitisation loads are targeted via **clinical psychology (CBT)**, behavioral coping strategies, pain-modulating hypnotherapy, and expert psychiatric diagnostic medication support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `,
             '#/doctors': `
                 <section class="py-12 px-4 sm:px-6 max-w-6xl mx-auto space-y-10">
@@ -772,7 +934,6 @@
 
             if (hash === '#/doctors') {
                 const grid = document.getElementById('doctors-grid');
-                
                 grid.innerHTML = clinicDoctors.map(doc => `
                     <div class="bg-white rounded-2xl border border-secondarySage/20 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row gap-6 items-center md:items-start hover:bg-bgIvory transition duration-300">
                         <div class="w-32 h-32 rounded-xl overflow-hidden bg-bgIvory border border-secondarySage/20 shadow-inner shrink-0 flex items-center justify-center">
@@ -788,11 +949,9 @@
                                 <h3 class="text-2xl font-bold text-primaryTeal mt-0.5 font-headingSerif">${doc.name}</h3>
                                 <p class="text-xs font-semibold text-clinicDark/60">${doc.degrees}</p>
                             </div>
-                            
                             <p class="text-sm text-clinicDark/90 leading-relaxed pt-1">
                                 ${doc.description}
                             </p>
-                            
                             <div class="pt-2 flex flex-wrap gap-1.5 justify-center md:justify-start">
                                 ${doc.specialties.map(spec => `<span class="text-[10px] bg-bgIvory border border-secondarySage/20 text-clinicDark font-semibold px-2.5 py-1 rounded-md shadow-sm">${spec}</span>`).join('')}
                             </div>
@@ -801,16 +960,16 @@
                 `).join('');
             }
 
-            // SYNCHRONIZED HIGH-CONTRAST DYNAMIC NAV LINKS CLASS INJECTION
-            document.querySelectorAll('#spa-nav a').forEach(navLink => {
-                if (navLink.getAttribute('href') === hash) {
-                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-white bg-secondarySage shadow-sm";
+            // DYNAMIC HIGHLIGHT SELECTION LOOP (SET TO secondarySage VALUE #7E9C90 WITH ACTIVE DROPDOWN LOGIC)
+            document.querySelectorAll('#spa-nav a, #spa-nav button').forEach(navLink => {
+                const href = navLink.getAttribute('href');
+                if (href === hash || (hash.includes('/conditions/') && navLink.tagName === 'BUTTON')) {
+                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-white bg-secondarySage shadow-sm flex items-center space-x-1";
                 } else {
-                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-clinicDark hover:text-secondarySage";
+                    navLink.className = "px-4 py-1.5 rounded-full text-sm font-bold transition text-clinicDark hover:text-secondarySage flex items-center space-x-1";
                 }
             });
 
-            // MOBILE SYNCHRONIZED NAV LINK RENDERING LOOP
             document.querySelectorAll('#spa-nav-mobile a').forEach(navLink => {
                 if (navLink.getAttribute('href') === hash) {
                     navLink.className = "px-4 py-3 rounded-xl text-sm font-bold transition text-white bg-secondarySage shadow-sm text-center block";
